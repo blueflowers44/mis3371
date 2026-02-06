@@ -1,0 +1,33 @@
+<!--
+Program name: patient-form.html
+Author: Your Full Name (UH roster)
+Date created: MM/DD/YYYY
+Date last edited: MM/DD/YYYY
+Version: 1.0
+Description: Patient registration form for a medical website
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Registration Form</title>
+
+    <!-- External CSS required by assignment -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Dynamic date script required -->
+    <script>
+        const today = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("currentDate").innerHTML =
+                today.toLocaleDateString('en-US', options);
+        });
+    </script>
+</head>
+
+<body>
+
+<!-- ===== HEADER DIV ===== -->
+<div id
