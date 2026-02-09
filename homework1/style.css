@@ -8,87 +8,106 @@ Description: External stylesheet for patient registration form
 */
 
 /* Tag selector example */
+/* ===== GLOBAL ===== */
+
 body {
-font-family: Arial, Helvetica, sans-serif;
-margin: 0;
-background: linear-gradient(180deg,#1a1625,#0f0c16);
-color: #e9e6f2;
+  font-family: Arial, sans-serif;
+  background: #0f0f18;
+  color: #e8e8ff;
+  margin: 0;
 }
 
+/* ===== HEADER ===== */
+
 #header {
-text-align: center;
-padding: 28px 16px;
-background: linear-gradient(180deg,#2a2140,#1b1530);
-border-bottom: 3px solid #6b4fd3;
+  background: linear-gradient(180deg,#1a1a2e,#121224);
+  text-align: center;
+  padding: 30px;
+  border-bottom: 3px solid #7c5cff;
 }
 
 #header img {
-height: 80px;
-margin-bottom: 10px;
+  width: 120px;
 }
 
-h1 {
-margin: 6px 0;
-color: #cfc4ff;
+#header h1 {
+  margin: 10px 0 5px;
+  color: #b8a6ff;
 }
 
 #today {
-opacity: .85;
+  color: #cfc7ff;
+  font-size: 14px;
 }
+
+/* ===== CONTENT ===== */
 
 #content {
-padding: 28px;
+  padding: 30px;
 }
 
-h2 {
-color: #cfc4ff;
+/* ===== FORM SECTIONS ===== */
+
+.section {
+  background: #1a1a2b;
+  border: 2px solid #6e4cff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
 }
+
+.section-title {
+  background: #6e4cff;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* ===== TABLE ===== */
 
 table {
-width: 100%;
-max-width: 950px;
-border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 td {
-padding: 10px;
+  padding: 8px;
 }
 
 input, select, textarea {
-width: 100%;
-padding: 9px;
-border-radius: 8px;
-border: 1px solid #4b3a8a;
-background: #151124;
-color: #e9e6f2;
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background: #0f0f18;
+  color: white;
 }
 
-textarea {
-height: 100px;
+/* ===== BUTTONS — SAME AS HW2 ===== */
+
+.btn {
+  background: #6e4cff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 10px;
 }
 
-button {
-background: #6b4fd3;
-color: white;
-border: none;
-padding: 10px 18px;
-border-radius: 8px;
-cursor: pointer;
+.btn:hover {
+  background: #8f75ff;
 }
 
-button:hover {
-background: #7d63e6;
+.btn-secondary {
+  background: #444;
 }
 
-fieldset {
-border: 1px solid #4b3a8a;
-border-radius: 10px;
-margin-bottom: 18px;
-padding: 14px;
+.btn-secondary:hover {
+  background: #666;
 }
 
-legend {
-color: #b7a8ff;
-font-weight: bold;
-}
 
