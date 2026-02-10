@@ -1,91 +1,116 @@
 <!--
 Program name: patient-form.html
 Author: Asia Roy 
-Date created: 02/06/2026
-Date last edited: 02/09/2026
-Version: 1.0
-Description: Patient registration form for BlueLeaf Health Clinic (HW1 basic reset)
+Version: reset
+Description: HW1 form using same structure/theme as HW2
 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>BlueLeaf Health Clinic – Patient Registration</title>
+<meta charset="UTF-8">
+<title>BlueLeaf Health Clinic – Patient Registration</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script>
+function showDate(){
+  const today = new Date();
+  document.getElementById("today").innerText =
+    "Today is: " + today.toDateString();
+}
+</script>
+
 </head>
 
-<body>
+<body onload="showDate()">
 
-  <div id="header">
-    <img src="logo.png" alt="BlueLeaf Health Clinic Logo" width="120">
-    <h1>BlueLeaf Health Clinic</h1>
-    <div id="today"></div>
-  </div>
+<!-- ===== HEADER (same as HW2 CSS expects) ===== -->
+<div id="header">
+  <img src="logo.png" alt="BlueLeaf Health Clinic Logo" style="width:110px;">
+  <h1>BlueLeaf Health Clinic</h1>
+  <div id="today"></div>
+</div>
 
-  <h2>Registration Form (Homework 1)</h2>
+<div id="main">
 
-  <form action="thankyou.html" method="get">
-    <table>
-      <tr>
-        <td>First Name</td>
-        <td><input type="text" name="firstname" required></td>
+<div class="panel">
 
-        <td>Middle Initial</td>
-        <td><input type="text" name="mi"></td>
+<h2>Registration Form (Homework 1)</h2>
 
-        <td>Last Name</td>
-        <td><input type="text" name="lastname" required></td>
-      </tr>
+<form action="thankyou.html" method="get">
 
-      <tr>
-        <td>Date of Birth</td>
-        <td><input type="date" name="dob"></td>
+<div class="section-title">Patient Info</div>
 
-        <td>ID Number</td>
-        <td><input type="password" name="id"></td>
-      </tr>
+<table class="form-table">
 
-      <tr>
-        <td>Address Line 1</td>
-        <td colspan="5"><input type="text" name="addr1" style="width: 98%;"></td>
-      </tr>
+<tr>
+<td>First Name</td>
+<td><input type="text" name="firstname" required></td>
 
-      <tr>
-        <td>Address Line 2</td>
-        <td colspan="5"><input type="text" name="addr2" style="width: 98%;"></td>
-      </tr>
+<td>Middle Initial</td>
+<td><input type="text" name="mi"></td>
 
-      <tr>
-        <td>City</td>
-        <td><input type="text" name="city"></td>
+<td>Last Name</td>
+<td><input type="text" name="lastname" required></td>
+</tr>
 
-        <td>State</td>
-        <td>
-          <select name="state">
-            <option value="">Select</option>
-            <option>TX</option>
-            <option>CA</option>
-            <option>NY</option>
-          </select>
-        </td>
+<tr>
+<td>Date of Birth</td>
+<td><input type="date" name="dob"></td>
 
-        <td>ZIP</td>
-        <td><input type="text" name="zip"></td>
-      </tr>
-    </table>
+<td>ID Number</td>
+<td><input type="password" name="id"></td>
+</tr>
 
-    <br>
-    <button type="reset">Start Over</button>
-    <button type="submit">Submit</button>
-  </form>
+<tr>
+<td>Address Line 1</td>
+<td colspan="5"><input type="text" name="addr1"></td>
+</tr>
 
-  <div id="footer">
-    BlueLeaf Health Clinic — Houston, TX 77024
-  </div>
+<tr>
+<td>Address Line 2</td>
+<td colspan="5"><input type="text" name="addr2"></td>
+</tr>
 
-  <script>
-    const today = new Date();
-    document.getElementById("today").innerText = "Today is: " + today.toDateString();
-  </script>
+<tr>
+<td>City</td>
+<td><input type="text" name="city"></td>
+
+<td>State</td>
+<td>
+<select name="state">
+<option value="">Select</option>
+<option>TX</option>
+<option>CA</option>
+<option>NY</option>
+<option>FL</option>
+<option>LA</option>
+<option>OK</option>
+<option>NM</option>
+</select>
+</td>
+
+<td>ZIP</td>
+<td><input type="text" name="zip"></td>
+</tr>
+
+</table>
+
+<div class="btn-row">
+<input type="reset" value="Start Over">
+<input type="submit" value="Submit">
+</div>
+
+</form>
+
+</div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div id="footer">
+BlueLeaf Health Clinic — Houston, TX 77024
+</div>
 
 </body>
 </html>
