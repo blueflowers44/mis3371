@@ -233,3 +233,12 @@ button:hover, input[type="submit"]:hover, input[type="reset"]:hover {
 .muted {
   opacity: 0.75;
 }
+/* ===== INPUT FOCUS PURPLE HIGHLIGHT ===== */
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #8b6bff;
+    box-shadow: 0 0 0 2px rgba(139,107,255,0.25);
+}
