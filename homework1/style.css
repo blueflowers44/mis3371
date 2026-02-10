@@ -152,3 +152,22 @@ input[type="date"] {
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
+/* =========================
+   HW1 BUTTON TEXT = BLACK
+========================= */
+
+button.btn-primary,
+button.btn-secondary {
+  color: #000000 !important;
+}
+
+/* make sure footer Contact Us matches too */
+footer button.btn-secondary {
+  color: #000000 !important;
+}
+
+/* optional: if you ever use input buttons later */
+input[type="submit"],
+input[type="reset"] {
+  color: #000000 !important;
+}
