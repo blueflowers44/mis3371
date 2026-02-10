@@ -299,3 +299,11 @@ footer button {
   background: #6b6b6b !important;
   color: #000000 !important;
 }
+/* ===== FIX BIG LOGO SIZE ===== */
+.logo {
+  width: 90px;
+  max-width: 90px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
