@@ -352,3 +352,14 @@ input[type="submit"]:hover,
 input[type="reset"]:hover {
   filter: brightness(1.08);
 }
+/* ===== FINAL BUTTON TEXT OVERRIDE — FORCE BLACK ===== */
+
+#btnSubmit,
+#btnReview,
+.btn-primary,
+.btn-secondary,
+button,
+input[type="submit"],
+input[type="reset"] {
+  color: #000000 !important;
+}
