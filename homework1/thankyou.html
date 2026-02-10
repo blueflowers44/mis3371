@@ -1,38 +1,66 @@
 <!--
 Program name: thankyou.html
-Author: Asia Roy
+Author: Asia Roy 
 Date created: 02/06/2026
-Date last edited: 02/09/2026
-Version: 1.0
-Description: Confirmation page after patient form submission
+Date last edited: 02/10/2026
+Version: 2.0
+Description: Confirmation page after patient form submission (HW1 themed)
 -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Thank You</title>
-<link rel="stylesheet" href="style.css">
+<title>Thank You – BlueLeaf Health Clinic</title>
+
+<link rel="stylesheet" href="style.css?v=110">
+
 </head>
 
 <body>
 
-<div id="header">
-  <img src="logo.png" alt="BlueLeaf Health Clinic Logo">
+<!-- ===== HEADER (match HW1) ===== -->
+
+<header class="site-header">
+  <img src="logo.png" alt="BlueLeaf Health Clinic Logo" class="logo">
   <h1>BlueLeaf Health Clinic</h1>
-</div>
+</header>
 
-<div id="content">
+<!-- ===== CARD ===== -->
+
+<div class="form-card" style="text-align:center; max-width:700px;">
+
   <h2>Thank you for your submission</h2>
-  <p>Your patient registration has been received.</p>
 
-  <br>
-  <a href="patient-form.html">
-    <button>Back to Form</button>
-  </a>
+  <p style="margin-top:12px;">
+    Your patient registration has been received.
+  </p>
+
+  <div class="button-row" style="justify-content:center; margin-top:22px;">
+    <a href="patient-form.html">
+      <button class="btn-secondary">Back to Form</button>
+    </a>
+  </div>
+
 </div>
+
+<!-- ===== FOOTER ===== -->
+
+<footer style="text-align:center;
+               padding:20px;
+               background:#1a1a28;
+               border-top:1px solid #5a3fa0;
+               margin-top:40px;
+               font-size:14px;">
+
+  BlueLeaf Health Clinic — P.O. Box 174268 Houston, TX 77024<br><br>
+
+  <button class="btn-secondary"
+          onclick="alert('Contact: info@blueleafclinic.com')">
+    Contact Us
+  </button>
+
+</footer>
 
 </body>
 </html>
-
-<!-- End of thankyou.html -->
