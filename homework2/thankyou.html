@@ -2,40 +2,66 @@
 Program name: thankyou.html
 Author: Asia Roy 
 Date created: 02/09/2026
-Date last edited: 02/09/2026
-Version: 2.0
-Description: Confirmation page for HW2 patient form submission
+Date last edited: 02/10/2026
+Version: 2.1
+Description: HW2 confirmation page — themed same as HW1
 -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Thank You – BlueLeaf Health Clinic</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="validate.js" defer></script>
+<meta charset="UTF-8">
+<title>Thank You – HW2</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
 <div id="header">
-  <img src="logo.png" alt="BlueLeaf Health Clinic Logo" width="140">
+  <img src="logo.png" alt="BlueLeaf Health Clinic Logo" width="120">
   <h1>BlueLeaf Health Clinic</h1>
-  <p>Today is: <span id="currentDate"></span></p>
+  <p>Thank you for your submission</p>
 </div>
 
-<div id="main" class="panel">
-  <h2>Thank you for your submission.</h2>
-  <p>Your registration has been received.</p>
-  <button type="button" onclick="location.href='patient-form.html'">Back to Form</button>
+<!-- ================= MAIN ================= -->
+<div id="main">
+
+  <div class="panel" style="max-width:700px;margin:30px auto;text-align:center;">
+
+    <h2>Your patient registration has been received.</h2>
+
+    <br>
+
+    <a href="patient-form.html">
+      <button class="btn-secondary" type="button">
+        Back to Form
+      </button>
+    </a>
+
+  </div>
+
 </div>
 
-<div id="footer">
-  <p>BlueLeaf Health Clinic • PO Box 18881 • Sugar Land, TX 77496</p>
-  <button type="button" onclick="alert('Contact Us: support@blueleafclinic.com')">Contact Us</button>
-</div>
+<!-- ================= FOOTER ================= -->
+
+<footer style="text-align:center;
+               padding:20px;
+               background:#1a1a28;
+               border-top:1px solid #5a3fa0;
+               margin-top:40px;
+               font-size:14px;">
+
+  BlueLeaf Health Clinic — PO Box 18881 • Sugar Land, TX 77496<br><br>
+
+  <button class="btn-secondary"
+          onclick="alert('Contact: info@blueleafclinic.com')">
+    Contact Us
+  </button>
+
+</footer>
 
 </body>
 </html>
-
-<!-- End of thankyou.html -->
