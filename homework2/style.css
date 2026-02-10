@@ -268,3 +268,34 @@ input[type="submit"]:hover,
 input[type="reset"]:hover {
   filter: brightness(1.08);
 }
+/* =========================
+   HARD OVERRIDES (HW2)
+   - black text on Review/Submit
+   - footer buttons grey w/ black text
+========================= */
+
+/* Review (button) + Submit (input) */
+button#btnReview,
+input#btnSubmit {
+  color: #000000 !important;
+}
+
+/* Make sure their backgrounds stay purple */
+button#btnReview,
+input#btnSubmit {
+  background: linear-gradient(135deg,#7c5cff,#9b7bff) !important;
+}
+
+/* Footer Contact Us (and any .btn-secondary) */
+button.btn-secondary,
+.btn-secondary {
+  background: #6b6b6b !important;
+  color: #000000 !important;
+}
+
+/* “Back to form” button on thankyou page (if it exists) */
+#footer button,
+footer button {
+  background: #6b6b6b !important;
+  color: #000000 !important;
+}
