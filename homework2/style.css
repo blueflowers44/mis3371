@@ -15,6 +15,13 @@ body {
   background: #121212; /* not default */
   color: #e7e7e7;
 }
+/* ===== LOGO SIZE — match HW1 ===== */
+.logo {
+  width: 90px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
 
 /* ID selectors */
 #header {
