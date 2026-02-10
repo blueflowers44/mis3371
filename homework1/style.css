@@ -144,3 +144,11 @@ textarea:focus {
         grid-template-columns: 1fr;
     }
 }
+input[type="date"] {
+  background: #0e0e17;
+  color: #e6e6f0;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
