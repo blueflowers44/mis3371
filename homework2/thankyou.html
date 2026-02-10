@@ -6,22 +6,33 @@ Date last edited: 02/10/2026
 Version: 2.0
 Description: Confirmation page after patient form submission
 -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Thank You</title>
 
-<link rel="stylesheet" href="style.css?v=999">
+<link rel="stylesheet" href="style.css?v=1001">
+
+<script>
+function showDate(){
+  const today = new Date();
+  document.getElementById("today").innerText =
+    "Today is: " + today.toLocaleDateString('en-US',
+      { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+}
+</script>
 
 </head>
 
-<body>
+<body onload="showDate()">
 
 <header class="site-header">
-  <img src="logo.png" class="logo" alt="BlueLeaf Health Clinic Logo" style="width:90px; max-width:90px; height:auto;">
+  <img src="logo.png" class="logo"
+       style="width:90px;max-width:90px;height:auto;"
+       alt="BlueLeaf Health Clinic Logo">
   <h1>BlueLeaf Health Clinic</h1>
+  <div id="today"></div>
 </header>
 
 <h2 class="page-title">Thank you for your submission</h2>
@@ -30,13 +41,15 @@ Description: Confirmation page after patient form submission
 
   <p>Your patient registration has been received.</p>
 
-  <div class="button-row" style="justify-content:center; margin-top:20px;">
-  <a href="patient-form.html">
-    <button style="background:#6b6b6b; color:#000; border:none; padding:8px 14px; border-radius:10px; font-weight:700;">
-      Back to Form
-    </button>
-  </a>
-</div>
+  <div class="button-row" style="justify-content:center;">
+    <a href="patient-form.html">
+      <button style="background:#6b6b6b;color:#000;
+                     border:none;padding:8px 14px;
+                     border-radius:10px;font-weight:700;">
+        Back to Form
+      </button>
+    </a>
+  </div>
 
 </div>
 
