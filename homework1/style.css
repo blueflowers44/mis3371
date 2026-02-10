@@ -1,131 +1,91 @@
-/*
-File name: style.css
+<!--
+Program name: patient-form.html
 Author: Asia Roy
 Date created: 02/06/2026
 Date last edited: 02/09/2026
-Version: 2.1
-Description: External stylesheet for patient registration form
-*/
+Version: 1.0
+Description: Patient registration form for BlueLeaf Health Clinic (HW1 basic reset)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BlueLeaf Health Clinic – Patient Registration</title>
+</head>
 
-/* ===============================
-   BlueLeaf Health Clinic Theme
-================================ */
+<body>
 
-/* GLOBAL */
+<div id="header">
+<img src="logo.png" alt="BlueLeaf Health Clinic Logo" width="120">
+<h1>BlueLeaf Health Clinic</h1>
+<div id="today"></div>
+</div>
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #0b0b12;
-    color: #e6e6f0;
-}
+<h2>Registration Form (Homework 1)</h2>
 
-/* HEADER */
+<form action="thankyou.html" method="get">
+<table>
+<tr>
+<td>First Name</td>
+<td><input type="text" name="firstname" required></td>
 
-.site-header {
-    text-align: center;
-    padding: 30px 10px;
-    background: #341a4d;
-    border-bottom: 2px solid #7c5cff;
-}
+<td>Middle Initial</td>
+<td><input type="text" name="mi"></td>
 
-/* ✅ SINGLE logo rule — fixed */
+<td>Last Name</td>
+<td><input type="text" name="lastname" required></td>
+</tr>
 
-.logo {
-    height: 60px;
-    width: auto;
-    display: block;
-    margin: 0 auto 10px auto;
-}
+<tr>
+<td>Date of Birth</td>
+<td><input type="date" name="dob"></td>
 
-.site-header h1 {
-    margin: 10px 0 5px 0;
-    font-size: 36px;
-    color: #aef3e7;
-}
+<td>ID Number</td>
+<td><input type="password" name="id"></td>
+</tr>
 
-#today {
-    font-size: 16px;
-    opacity: 0.9;
-}
+<tr>
+<td>Address Line 1</td>
+<td colspan="5"><input type="text" name="addr1" style="width: 98%;"></td>
+</tr>
 
-/* PAGE TITLE */
+<tr>
+<td>Address Line 2</td>
+<td colspan="5"><input type="text" name="addr2" style="width: 98%;"></td>
+</tr>
 
-.page-title {
-    margin: 30px auto 10px;
-    max-width: 1100px;
-    padding: 0 20px;
-}
+<tr>
+<td>City</td>
+<td><input type="text" name="city"></td>
 
-/* CARD */
+<td>State</td>
+<td>
+<select name="state">
+<option value="">Select</option>
+<option>TX</option>
+<option>CA</option>
+<option>NY</option>
+</select>
+</td>
 
-.form-card {
-    max-width: 1100px;
-    margin: 10px auto 40px;
-    background: #151522;
-    border-radius: 12px;
-    padding: 20px 22px 28px;
-    border: 1px solid #5a3fa0;
-    box-shadow: 0 0 0 1px rgba(124,92,255,0.15) inset;
-}
+<td>ZIP</td>
+<td><input type="text" name="zip"></td>
+</tr>
+</table>
 
-/* SECTION BAR */
+<br>
+<button type="reset">Start Over</button>
+<button type="submit">Submit</button>
+</form>
 
-.section-title {
-    background: #3c2d55;
-    color: #e9dcff;
-    padding: 10px 14px;
-    border-radius: 8px;
-    margin: 18px 0 14px;
-    font-weight: bold;
-    font-size: 15px;
-}
+<div id="footer">
+BlueLeaf Health Clinic — Houston, TX 77024
+</div>
 
-/* INPUTS */
+<script>
+const today = new Date();
+document.getElementById("today").innerText = "Today is: " + today.toDateString();
+</script>
 
-label {
-    font-size: 14px;
-    margin-bottom: 6px;
-    display: block;
-    color: #d7d7e6;
-}
-
-input,
-select,
-textarea {
-    width: 100%;
-    padding: 10px 12px;
-    border-radius: 8px;
-    border: 1px solid #3d3d55;
-    background: #0e0e17;
-    color: #e6e6f0;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-
-/* BUTTONS */
-
-.button-row {
-    margin-top: 22px;
-    display: flex;
-    gap: 12px;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #7c5cff, #9b7bff);
-    border: none;
-    color: white;
-    padding: 10px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.btn-secondary {
-    background: #444;
-    border: none;
-    color: white;
-    padding: 10px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-}
+</body>
+</html>
