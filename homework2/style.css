@@ -310,14 +310,3 @@ button:not(.btn-primary) {
   font-weight: 700;
   cursor: pointer;
 }
-/* ======================
-   Validation Error Style
-====================== */
-
-.err {
-  color: #ff6b6b;
-  font-weight: 700;
-  font-size: 13px;
-  margin-top: 4px;
-}
-
