@@ -310,3 +310,11 @@ button:not(.btn-primary) {
   font-weight: 700;
   cursor: pointer;
 }
+/* Invalid field highlight */
+
+input:invalid,
+select:invalid,
+textarea:invalid {
+  border-color: #8b6bff;
+  box-shadow: 0 0 0 2px rgba(139,107,255,0.25);
+}
