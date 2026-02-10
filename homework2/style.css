@@ -157,11 +157,14 @@ input[type="reset"] {
 
 /* PRIMARY — purple (Submit + Review) */
 
+/* =========================
+   FORCE BLACK TEXT ON PURPLE BUTTONS
+========================= */
+
 #btnSubmit,
-#btnReview,
-.btn-primary {
-  background: linear-gradient(135deg,#7c5cff,#9b7bff);
-  color: #ffffff;
+#btnReview {
+  color: #000000 !important;
+}
   border: none;
   padding: 10px 16px;
   border-radius: 12px;
