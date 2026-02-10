@@ -1,13 +1,14 @@
 /*
 File name: style.css
 Author: Asia Roy
-Date created:02/06/2026
+Date created: 02/06/2026
 Date last edited: 02/09/2026
-Version: 1.0
+Version: 2.1
 Description: External stylesheet for patient registration form
+*/
+
 /* ===============================
    BlueLeaf Health Clinic Theme
-   Homework 1 + Homework 2 Match
 ================================ */
 
 /* GLOBAL */
@@ -20,14 +21,6 @@ body {
 }
 
 /* HEADER */
-/* ===== Header Logo Size Fix ===== */
-
-.logo {
-  height: 70px;
-  width: auto;
-  display: block;
-  margin: 0 auto 10px auto;
-}
 
 .site-header {
     text-align: center;
@@ -36,9 +29,13 @@ body {
     border-bottom: 2px solid #7c5cff;
 }
 
+/* ✅ SINGLE logo rule — fixed */
+
 .logo {
-    width: 90px;
-    margin-bottom: 10px;
+    height: 60px;
+    width: auto;
+    display: block;
+    margin: 0 auto 10px auto;
 }
 
 .site-header h1 {
@@ -84,18 +81,6 @@ body {
     font-size: 15px;
 }
 
-/* GRID */
-
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px 18px;
-}
-
-.form-row-full {
-    grid-column: 1 / -1;
-}
-
 /* INPUTS */
 
 label {
@@ -118,14 +103,6 @@ textarea {
     box-sizing: border-box;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
-    outline: none;
-    border-color: #8b6bff;
-    box-shadow: 0 0 0 2px rgba(139,107,255,0.25);
-}
-
 /* BUTTONS */
 
 .button-row {
@@ -144,10 +121,6 @@ textarea:focus {
     font-weight: bold;
 }
 
-.btn-primary:hover {
-    opacity: 0.9;
-}
-
 .btn-secondary {
     background: #444;
     border: none;
@@ -155,12 +128,4 @@ textarea:focus {
     padding: 10px 18px;
     border-radius: 8px;
     cursor: pointer;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 900px) {
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
 }
