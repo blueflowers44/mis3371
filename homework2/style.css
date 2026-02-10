@@ -6,28 +6,115 @@ Date last edited: 02/10/2026
 Version: 2.0
 Description: External stylesheet for HW2 patient registration
 */
-
-border-color: #8b6bff;
-    box-shadow: 0 0 0 2px rgba(139,107,255,0.25);
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #121212;
+  color: #e7e7e7;
 }
-/* ==============================
-   HW2 Visual Parity Additions
-   (match HW1 behavior)
-============================== */
 
-/* Dark theme for date input */
+/* ================= HEADER ================= */
+
+#header {
+  text-align: center;
+  padding: 18px 12px;
+  background: #2b163e;
+  border-bottom: 2px solid #8b5cf6;
+}
+
+#header h1 {
+  margin: 8px 0 0;
+  color: #b9f6e8;
+}
+
+/* ================= MAIN ================= */
+
+#main {
+  padding: 18px;
+}
+
+/* ================= FOOTER ================= */
+
+#footer {
+  margin-top: 24px;
+  padding: 14px;
+  text-align: center;
+  background: #0b0b0b;
+  border-top: 1px solid #2d2d2d;
+}
+
+/* ================= LINKS ================= */
+
+a { color: #b9f6e8; }
+a:visited { color: #c084fc; }
+
+/* ================= LAYOUT ================= */
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.panel {
+  background: #1b1b1b;
+  border: 1px solid #2f2f2f;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+.review-panel {
+  border: 1px solid rgba(192,132,252,0.35);
+}
+
+/* ================= TABLE ================= */
+
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-table td, .form-table th {
+  padding: 10px;
+  vertical-align: top;
+}
+
+/* ================= SECTION TITLES ================= */
+
+.section-title {
+  background: rgba(139,92,246,0.14);
+  color: #e9d5ff;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: left;
+}
+
+/* ================= INPUTS ================= */
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #3a3a3a;
+  background: #111;
+  color: #e7e7e7;
+  box-sizing: border-box;
+}
+
 input[type="date"] {
   background: #111;
   color: #e7e7e7;
-  border: 1px solid #3a3a3a;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
-  cursor: pointer;
 }
 
-/* Match HW1 purple focus glow exactly */
+/* ===== PURPLE FOCUS GLOW ===== */
+
 input:focus,
 select:focus,
 textarea:focus {
@@ -36,17 +123,105 @@ textarea:focus {
   box-shadow: 0 0 0 2px rgba(139,107,255,0.25);
 }
 
-/* Footer button class compatibility */
-.btn-secondary {
-  background: #b9f6e8;
-  color: #0b0b0b;
+/* ================= ERRORS ================= */
+
+.err {
+  color: #ff6b6b;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+  min-height: 14px;
+}
+
+/* ================= DATE ROW ================= */
+
+.date-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  max-width: 360px;
+}
+
+.slash {
+  opacity: 0.7;
+}
+
+/* ================= BUTTONS ================= */
+
+/* remove forced caps */
+button,
+input[type="submit"],
+input[type="reset"] {
+  text-transform: none;
+}
+
+/* PRIMARY — purple (Submit + Review) */
+
+#btnSubmit,
+#btnReview,
+.btn-primary {
+  background: linear-gradient(135deg,#7c5cff,#9b7bff);
+  color: #ffffff;
   border: none;
-  padding: 10px 14px;
+  padding: 10px 16px;
   border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
 }
 
-.btn-secondary:hover {
-  filter: brightness(1.07);
+/* SECONDARY — grey (Start Over + Contact) */
+
+#btnReset,
+.btn-secondary {
+  background: #6b6b6b;
+  color: #000000;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  filter: brightness(1.08);
+}
+
+/* ================= REVIEW PANEL ================= */
+
+.review-title {
+  background: rgba(192,132,252,0.20);
+  border: 1px solid rgba(192,132,252,0.35);
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+  color: #e9d5ff;
+}
+
+.review-area {
+  min-height: 420px;
+}
+
+.review-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 90px;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  background: #141414;
+}
+
+/* ================= SLIDER CHIP ================= */
+
+.chip {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(185,246,232,0.14);
+  border: 1px solid rgba(185,246,232,0.35);
+  color: #b9f6e8;
+  font-weight: 700;
 }
