@@ -6,6 +6,15 @@ Date last edited: 02/10/2026
 Version: 2.0
 Description: Confirmation page after patient form submission
 -->
+<!--
+Program name: thankyou.html
+Author: AJ
+Date created: 02/09/2026
+Date last edited: 02/10/2026
+Version: 2.0
+Description: HW2 confirmation page (identical layout to HW1)
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,45 +27,32 @@ Description: Confirmation page after patient form submission
 
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header class="site-header">
-  <img src="logo.png" class="logo" alt="BlueLeaf Health Clinic Logo">
+  <img src="logo.png" alt="BlueLeaf Health Clinic Logo" class="logo">
   <h1>BlueLeaf Health Clinic</h1>
 </header>
 
-<!-- centered container that ignores HW2 grid/panel styles -->
-<div style="max-width:900px;
-            margin:40px auto;
-            padding:0 20px;">
+<!-- ================= CONTENT ================= -->
 
-  <h2 class="page-title">Thank you for your submission</h2>
+<div class="form-card" style="max-width:900px;text-align:left;">
 
-  <div style="
-      background:#151522;
-      border:1px solid #5a3fa0;
-      border-radius:12px;
-      padding:28px;
-      text-align:center;">
+  <h2>Thank you for your submission</h2>
 
-      <p>Your patient registration has been received.</p>
+  <p>Your patient registration has been received.</p>
 
-      <div style="margin-top:18px;">
-        <a href="patient-form.html">
-          <button style="
-              background:#6b6b6b;
-              color:#000;
-              border:none;
-              padding:8px 14px;
-              border-radius:10px;
-              font-weight:700;
-              cursor:pointer;">
-            Back to Form
-          </button>
-        </a>
-      </div>
+  <br>
 
-  </div>
+  <a href="patient-form.html">
+    <button class="btn-secondary" type="button">
+      Back to Form
+    </button>
+  </a>
 
 </div>
+
+<!-- ================= FOOTER ================= -->
 
 <footer style="text-align:center;
                padding:20px;
@@ -67,15 +63,8 @@ Description: Confirmation page after patient form submission
 
   BlueLeaf Health Clinic — P.O. Box 174268 Houston, TX 77024<br><br>
 
-  <button style="
-      background:#6b6b6b;
-      color:#000;
-      border:none;
-      padding:8px 14px;
-      border-radius:10px;
-      font-weight:700;
-      cursor:pointer;"
-      onclick="alert('Contact: info@blueleafclinic.com')">
+  <button class="btn-secondary"
+          onclick="alert('Contact: info@blueleafclinic.com')">
     Contact Us
   </button>
 
@@ -84,8 +73,4 @@ Description: Confirmation page after patient form submission
 </body>
 </html>
 
-</footer>
-
-</body>
-</html>
 
