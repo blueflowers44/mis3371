@@ -2,7 +2,7 @@
 File name: validate.js
 Author: Asia Roy 
 Date created: 02/09/2026
-Date last edited: 02/09/2026
+Date last edited: 02/10/2026
 Version: 2.0
 Description: HW2 validation + review display logic for patient registration form
 */
