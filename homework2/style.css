@@ -307,3 +307,43 @@ footer button {
   display: block;
   margin: 0 auto 10px;
 }
+/* ===============================
+   HW1 THANKYOU PAGE STYLE BLOCKS
+   (needed so HW2 thankyou matches HW1)
+=============================== */
+
+.site-header {
+  text-align: center;
+  padding: 30px 10px;
+  background: #341a4d;
+  border-bottom: 2px solid #7c5cff;
+}
+
+.site-header h1 {
+  margin: 10px 0 5px 0;
+  font-size: 36px;
+  color: #aef3e7;
+}
+
+.page-title {
+  margin: 30px auto 10px;
+  max-width: 1100px;
+  padding: 0 20px;
+}
+
+.form-card {
+  max-width: 1100px;
+  margin: 10px auto 40px;
+  background: #151522;
+  border-radius: 12px;
+  padding: 20px 22px 28px;
+  border: 1px solid #5a3fa0;
+  box-shadow: 0 0 0 1px rgba(124,92,255,0.15) inset;
+}
+
+.button-row {
+  margin-top: 22px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+}
