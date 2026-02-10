@@ -20,6 +20,14 @@ body {
 }
 
 /* HEADER */
+/* ===== Header Logo Size Fix ===== */
+
+.logo {
+  height: 70px;
+  width: auto;
+  display: block;
+  margin: 0 auto 10px auto;
+}
 
 .site-header {
     text-align: center;
