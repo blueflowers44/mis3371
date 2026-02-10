@@ -378,3 +378,61 @@ img.logo {
   display: block;
   margin: 0 auto 10px;
 }
+/* =========================
+   MATCH HW1 HEADER EXACTLY
+========================= */
+
+.site-header {
+  text-align: center;
+  padding: 30px 10px;
+  background: #341a4d;
+  border-bottom: 2px solid #7c5cff;
+}
+
+.site-header h1 {
+  margin: 10px 0 5px 0;
+  font-size: 36px;
+  color: #aef3e7;
+}
+/* =========================
+   MATCH HW1 HEADER EXACTLY
+========================= */
+
+.site-header {
+  text-align: center;
+  padding: 30px 10px;
+  background: #341a4d;
+  border-bottom: 2px solid #7c5cff;
+}
+
+.site-header h1 {
+  margin: 10px 0 5px 0;
+  font-size: 36px;
+  color: #aef3e7;
+}
+/* =========================
+   MATCH HW1 HEADER EXACTLY
+========================= */
+
+.site-header {
+  text-align: center;
+  padding: 30px 10px;
+  background: #341a4d;
+  border-bottom: 2px solid #7c5cff;
+}
+
+.site-header h1 {
+  margin: 10px 0 5px 0;
+  font-size: 36px;
+  color: #aef3e7;
+}
+
+/* force logo size same as HW1 everywhere */
+.site-header .logo {
+  width: 90px !important;
+  max-width: 90px !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto 10px;
+}
+
