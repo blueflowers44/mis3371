@@ -12,72 +12,52 @@ Description: Confirmation page after patient form submission
 <meta charset="UTF-8">
 <title>Thank You</title>
 
-<link rel="stylesheet" href="style.css?v=2000">
-
-<script>
-function showDate(){
-  const today = new Date();
-  document.getElementById("today").innerText =
-    "Today is: " + today.toLocaleDateString('en-US',
-      { weekday:'long', year:'numeric', month:'long', day:'numeric' });
-}
-</script>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
-<body onload="showDate()" style="margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b0b12;color:#e6e6f0;">
+<body>
 
-<!-- FORCE SAME HEADER LOOK -->
-<header style="text-align:center;
-               padding:30px 10px;
-               background:#341a4d;
-               border-bottom:2px solid #7c5cff;">
-
-  <img src="logo.png"
-       style="width:90px;height:auto;margin-bottom:10px;"
-       alt="BlueLeaf Health Clinic Logo">
-
-  <h1 style="margin:10px 0 5px;font-size:36px;color:#aef3e7;">
-    BlueLeaf Health Clinic
-  </h1>
-
-  <div id="today" style="font-size:16px;opacity:.9;"></div>
+<header class="site-header">
+  <img src="logo.png" class="logo" alt="BlueLeaf Health Clinic Logo">
+  <h1>BlueLeaf Health Clinic</h1>
 </header>
 
-<!-- TITLE -->
-<h2 style="margin:30px auto 10px;
-           max-width:1100px;
-           padding:0 20px;">
-  Thank you for your submission
-</h2>
+<!-- centered container that ignores HW2 grid/panel styles -->
+<div style="max-width:900px;
+            margin:40px auto;
+            padding:0 20px;">
 
-<!-- CARD -->
-<div style="max-width:700px;
-            margin:10px auto 40px;
-            background:#151522;
-            border-radius:12px;
-            padding:28px;
-            border:1px solid #5a3fa0;
-            box-shadow:0 0 0 1px rgba(124,92,255,.15) inset;
-            text-align:center;">
+  <h2 class="page-title">Thank you for your submission</h2>
 
-  <p>Your patient registration has been received.</p>
+  <div style="
+      background:#151522;
+      border:1px solid #5a3fa0;
+      border-radius:12px;
+      padding:28px;
+      text-align:center;">
 
-  <a href="patient-form.html">
-    <button style="background:#6b6b6b;
-                   color:#000;
-                   border:none;
-                   padding:8px 14px;
-                   border-radius:10px;
-                   font-weight:700;
-                   cursor:pointer;">
-      Back to Form
-    </button>
-  </a>
+      <p>Your patient registration has been received.</p>
+
+      <div style="margin-top:18px;">
+        <a href="patient-form.html">
+          <button style="
+              background:#6b6b6b;
+              color:#000;
+              border:none;
+              padding:8px 14px;
+              border-radius:10px;
+              font-weight:700;
+              cursor:pointer;">
+            Back to Form
+          </button>
+        </a>
+      </div>
+
+  </div>
 
 </div>
 
-<!-- FOOTER -->
 <footer style="text-align:center;
                padding:20px;
                background:#1a1a28;
@@ -87,14 +67,15 @@ function showDate(){
 
   BlueLeaf Health Clinic — P.O. Box 174268 Houston, TX 77024<br><br>
 
-  <button style="background:#6b6b6b;
-                 color:#000;
-                 border:none;
-                 padding:8px 14px;
-                 border-radius:10px;
-                 font-weight:700;
-                 cursor:pointer;"
-          onclick="alert('Contact: info@blueleafclinic.com')">
+  <button style="
+      background:#6b6b6b;
+      color:#000;
+      border:none;
+      padding:8px 14px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;"
+      onclick="alert('Contact: info@blueleafclinic.com')">
     Contact Us
   </button>
 
