@@ -6,16 +6,17 @@ Date last edited: 02/10/2026
 Version: 2.0
 Description: External stylesheet for HW2 patient registration
 */
+
+/* Tag selector */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #121212;
+  background: #121212; /* not default */
   color: #e7e7e7;
 }
 
-/* ================= HEADER ================= */
-
+/* ID selectors */
 #header {
   text-align: center;
   padding: 18px 12px;
@@ -26,15 +27,12 @@ body {
 #header h1 {
   margin: 8px 0 0;
   color: #b9f6e8;
+  letter-spacing: 0.5px;
 }
-
-/* ================= MAIN ================= */
 
 #main {
   padding: 18px;
 }
-
-/* ================= FOOTER ================= */
 
 #footer {
   margin-top: 24px;
@@ -44,13 +42,11 @@ body {
   border-top: 1px solid #2d2d2d;
 }
 
-/* ================= LINKS ================= */
-
+/* Hyperlink styles */
 a { color: #b9f6e8; }
 a:visited { color: #c084fc; }
 
-/* ================= LAYOUT ================= */
-
+/* Class selector */
 .layout {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -67,11 +63,10 @@ a:visited { color: #c084fc; }
 }
 
 .review-panel {
-  border: 1px solid rgba(192,132,252,0.35);
+  border: 1px solid rgba(192, 132, 252, 0.35);
 }
 
-/* ================= TABLE ================= */
-
+/* Table layout requirement */
 .form-table {
   width: 100%;
   border-collapse: collapse;
@@ -82,122 +77,109 @@ a:visited { color: #c084fc; }
   vertical-align: top;
 }
 
-/* ================= SECTION TITLES ================= */
-
 .section-title {
-  background: rgba(139,92,246,0.14);
+  text-align: left;
+  background: rgba(139, 92, 246, 0.14);
   color: #e9d5ff;
   border-radius: 10px;
   padding: 10px;
-  text-align: left;
 }
 
-/* ================= INPUTS ================= */
+/* Name selector example (targets inputs with name attr) */
+input[name], select[name], textarea[name] {
+  font-size: 14px;
+}
 
-input, select, textarea {
+/* Inputs */
+input[type="text"], input[type="email"], input[type="password"], select, textarea {
   width: 100%;
-  padding: 10px;
+  box-sizing: border-box;
+  padding: 10px 10px;
   border-radius: 10px;
   border: 1px solid #3a3a3a;
   background: #111;
   color: #e7e7e7;
-  box-sizing: border-box;
-}
-
-input[type="date"] {
-  background: #111;
-  color: #e7e7e7;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-}
-
-/* ===== PURPLE FOCUS GLOW ===== */
-
-input:focus,
-select:focus,
-textarea:focus {
   outline: none;
-  border-color: #8b6bff;
-  box-shadow: 0 0 0 2px rgba(139,107,255,0.25);
 }
 
-/* ================= ERRORS ================= */
+input:focus, select:focus, textarea:focus {
+  border-color: #b9f6e8;
+}
+
+label {
+  margin-right: 12px;
+  display: inline-block;
+  margin-top: 6px;
+}
 
 .err {
-  color: #ff6b6b;
-  font-size: 12px;
-  margin-top: 4px;
   display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #ff7b7b;
   min-height: 14px;
 }
 
-/* ================= DATE ROW ================= */
-
 .date-row {
   display: flex;
-  gap: 8px;
   align-items: center;
+  gap: 8px;
   max-width: 360px;
 }
 
+.date-row input {
+  text-align: center;
+}
+
 .slash {
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
-/* ================= BUTTONS ================= */
+.btn-row {
+  text-align: center;
+  padding-top: 14px;
+}
 
-/* remove forced caps */
-button,
-input[type="submit"],
+input[type="reset"], input[type="submit"], button {
+  background: #8b5cf6;
+  border: none;
+  color: #0b0b0b;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: 0 6px;
+  font-weight: 700;
+}
+
 input[type="reset"] {
-  text-transform: none;
+  background: #b9f6e8;
 }
 
-/* PRIMARY — purple (Submit + Review) */
-
-/* =========================
-   FORCE BLACK TEXT ON PURPLE BUTTONS
-========================= */
-
-#btnSubmit,
-#btnReview {
-  color: #000000 !important;
+button#btnReview {
+  background: #c084fc;
 }
-  border: none;
-  padding: 10px 16px;
-  border-radius: 12px;
+
+button:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+  filter: brightness(1.07);
+}
+
+.chip {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(185, 246, 232, 0.14);
+  border: 1px solid rgba(185, 246, 232, 0.35);
+  color: #b9f6e8;
   font-weight: 700;
-  cursor: pointer;
 }
-
-/* SECONDARY — grey (Start Over + Contact) */
-
-#btnReset,
-.btn-secondary {
-  background: #6b6b6b;
-  color: #000000;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 12px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-button:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover {
-  filter: brightness(1.08);
-}
-
-/* ================= REVIEW PANEL ================= */
 
 .review-title {
-  background: rgba(192,132,252,0.20);
-  border: 1px solid rgba(192,132,252,0.35);
+  margin: 4px 0 12px;
   padding: 10px;
   border-radius: 12px;
+  background: rgba(192, 132, 252, 0.20);
+  border: 1px solid rgba(192, 132, 252, 0.35);
   text-align: center;
   color: #e9d5ff;
 }
@@ -206,144 +188,167 @@ input[type="reset"]:hover {
   min-height: 420px;
 }
 
+.review-block {
+  display: grid;
+  gap: 10px;
+}
+
+.review-subtitle {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(185, 246, 232, 0.10);
+  border: 1px solid rgba(185, 246, 232, 0.25);
+  color: #b9f6e8;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
 .review-row {
   display: grid;
   grid-template-columns: 160px 1fr 90px;
   gap: 10px;
-  padding: 8px;
+  align-items: start;
+  padding: 8px 10px;
   border-radius: 12px;
   border: 1px solid #2a2a2a;
   background: #141414;
 }
 
-/* ================= SLIDER CHIP ================= */
-
-.chip {
-  display: inline-block;
-  margin-left: 10px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(185,246,232,0.14);
-  border: 1px solid rgba(185,246,232,0.35);
-  color: #b9f6e8;
+.review-label {
   font-weight: 700;
+  opacity: 0.9;
 }
-/* =========================
-   FINAL BUTTON SIZE FIX
-========================= */
 
-/* shared button sizing */
+.review-val {
+  opacity: 0.95;
+}
+
+.review-status {
+  text-align: right;
+  font-weight: 900;
+  color: #b9f6e8;
+}
+
+.muted {
+  opacity: 0.75;
+}
+/* ===== INPUT FOCUS PURPLE HIGHLIGHT ===== */
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #8b6bff;
+    box-shadow: 0 0 0 2px rgba(139,107,255,0.25);
+}
+/* ==============================
+   HW2 Visual Parity Additions
+   (match HW1 behavior)
+============================== */
+
+/* Dark theme for date input */
+input[type="date"] {
+  background: #111;
+  color: #e7e7e7;
+  border: 1px solid #3a3a3a;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Match HW1 purple focus glow exactly */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #8b6bff;
+  box-shadow: 0 0 0 2px rgba(139,107,255,0.25);
+}
+
+/* Footer button class compatibility */
+.btn-secondary {
+  background: #b9f6e8;
+  color: #0b0b0b;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  filter: brightness(1.07);
+}
+/* ==============================
+   Unified Button Theme (match HW1)
+============================== */
+
+/* Primary submit button — purple */
+.btn-primary,
+input[type="submit"] {
+  background: linear-gradient(135deg, #7c5cff, #9b7bff);
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Secondary buttons — grey */
+.btn-secondary,
+input[type="reset"],
+button:not(.btn-primary) {
+  background: #555555;
+  color: #000000;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+/* ============================
+   Final Unified Button Rules
+============================ */
+
+/* Stop forced ALL CAPS anywhere */
 button,
 input[type="submit"],
 input[type="reset"] {
-  width: auto;
-  display: inline-block;
-  padding: 8px 14px;
-  font-size: 14px;
-  border-radius: 10px;
+  text-transform: none !important;
+  letter-spacing: normal !important;
 }
 
-/* PRIMARY — Submit + Review (purple) */
-#btnSubmit,
+/* Primary = Submit + Review (purple) */
+.btn-primary,
 #btnReview,
-.btn-primary {
-  background: linear-gradient(135deg,#7c5cff,#9b7bff);
-  color: #ffffff;
+button.btn-primary,
+input[type="submit"] {
+  background: linear-gradient(135deg, #7c5cff, #9b7bff) !important;
+  color: #ffffff !important;
   border: none;
   font-weight: 700;
 }
 
-/* SECONDARY — Start Over + Contact (grey) */
-#btnReset,
-.btn-secondary {
-  background: #6b6b6b;
-  color: #000000;
+/* Secondary = Start Over + Contact (grey with BLACK text) */
+.btn-secondary,
+button.btn-secondary,
+input[type="reset"] {
+  background: #555555 !important;
+  color: #000000 !important;
   border: none;
   font-weight: 700;
 }
 
-/* hover */
+/* Hover */
+.btn-primary:hover,
+.btn-secondary:hover,
+
 button:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover {
   filter: brightness(1.08);
-}
-/* =========================
-   HARD OVERRIDES (HW2)
-   - black text on Review/Submit
-   - footer buttons grey w/ black text
-========================= */
-
-/* Review (button) + Submit (input) */
-button#btnReview,
-input#btnSubmit {
-  color: #000000 !important;
-}
-
-/* Make sure their backgrounds stay purple */
-button#btnReview,
-input#btnSubmit {
-  background: linear-gradient(135deg,#7c5cff,#9b7bff) !important;
-}
-
-/* Footer Contact Us (and any .btn-secondary) */
-button.btn-secondary,
-.btn-secondary {
-  background: #6b6b6b !important;
-  color: #000000 !important;
-}
-
-/* “Back to form” button on thankyou page (if it exists) */
-#footer button,
-footer button {
-  background: #6b6b6b !important;
-  color: #000000 !important;
-}
-/* ===== FIX BIG LOGO SIZE ===== */
-.logo {
-  width: 90px;
-  max-width: 90px;
-  height: auto;
-  display: block;
-  margin: 0 auto 10px;
-}
-/* ===============================
-   HW1 THANKYOU PAGE STYLE BLOCKS
-   (needed so HW2 thankyou matches HW1)
-=============================== */
-
-.site-header {
-  text-align: center;
-  padding: 30px 10px;
-  background: #341a4d;
-  border-bottom: 2px solid #7c5cff;
-}
-
-.site-header h1 {
-  margin: 10px 0 5px 0;
-  font-size: 36px;
-  color: #aef3e7;
-}
-
-.page-title {
-  margin: 30px auto 10px;
-  max-width: 1100px;
-  padding: 0 20px;
-}
-
-.form-card {
-  max-width: 1100px;
-  margin: 10px auto 40px;
-  background: #151522;
-  border-radius: 12px;
-  padding: 20px 22px 28px;
-  border: 1px solid #5a3fa0;
-  box-shadow: 0 0 0 1px rgba(124,92,255,0.15) inset;
-}
-
-.button-row {
-  margin-top: 22px;
-  display: flex;
-  gap: 12px;
-  justify-content: flex-start;
 }
