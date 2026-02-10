@@ -310,3 +310,45 @@ button:not(.btn-primary) {
   font-weight: 700;
   cursor: pointer;
 }
+/* ============================
+   Final Unified Button Rules
+============================ */
+
+/* Stop forced ALL CAPS anywhere */
+button,
+input[type="submit"],
+input[type="reset"] {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+/* Primary = Submit + Review (purple) */
+.btn-primary,
+#btnReview,
+button.btn-primary,
+input[type="submit"] {
+  background: linear-gradient(135deg, #7c5cff, #9b7bff) !important;
+  color: #ffffff !important;
+  border: none;
+  font-weight: 700;
+}
+
+/* Secondary = Start Over + Contact (grey with BLACK text) */
+.btn-secondary,
+button.btn-secondary,
+input[type="reset"] {
+  background: #555555 !important;
+  color: #000000 !important;
+  border: none;
+  font-weight: 700;
+}
+
+/* Hover */
+.btn-primary:hover,
+.btn-secondary:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  filter: brightness(1.08);
+}
+
