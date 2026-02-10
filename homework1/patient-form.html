@@ -13,103 +13,232 @@ Description: Patient registration form for BlueLeaf Health Clinic
 <meta charset="UTF-8">
 <title>BlueLeaf Health Clinic – Patient Registration</title>
 
+<!-- External CSS -->
 <link rel="stylesheet" href="style.css">
 
 <script>
 function showDate(){
-const today = new Date();
-document.getElementById("today").innerText =
-"Today is: " + today.toDateString();
+  const today = new Date();
+  document.getElementById("today").innerText =
+    "Today is: " + today.toLocaleDateString('en-US',
+      { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 }
 </script>
 
 </head>
+@@ -27,57 +25,55 @@
 
 <body onload="showDate()">
 
+<!-- ================= HEADER ================= -->
+
+<header class="site-header">
+  <img src="logo.png" alt="BlueLeaf Health Clinic Logo" class="logo">
+  <h1>BlueLeaf Health Clinic</h1>
+  <div id="today"></div>
+</header>
+
+<!-- ================= PAGE TITLE ================= -->
+
+<h2 class="page-title">Registration Form (Homework 1)</h2>
 <!-- ===== HEADER ===== -->
 <div id="header">
-<img src="logo.png" alt="BlueLeaf Health Clinic Logo" class="logo">
+  <img src="logo.png" alt="BlueLeaf Health Clinic Logo">
+  <img src="logo.png">
 <h1>BlueLeaf Health Clinic</h1>
 <div id="today"></div>
 </div>
 
+<!-- ================= FORM CARD ================= -->
 <!-- ===== CONTENT ===== -->
 <div id="content">
 
+<div class="form-card">
+<h2>Patient Registration Form</h2>
 <h2>Registration Form (Homework 1)</h2>
 
 <form action="thankyou.html" method="get">
 
+<!-- ================= SECTION ================= -->
+
+<fieldset>
+<legend>Patient Info</legend>
 <div class="section">
 <div class="section-title">Patient Info</div>
 
+<table style="width:100%; border-collapse:separate; border-spacing:16px;">
 <table>
 
 <tr>
+<td>
+<label>First Name</label>
+<input name="firstname" required>
+</td>
 <td>First Name</td>
 <td><input type="text" name="firstname" required></td>
+<td><input name="firstname" required></td>
 
+<td>
+<label>Middle Initial</label>
+<input name="mi">
+</td>
 <td>Middle Initial</td>
 <td><input type="text" name="mi"></td>
+<td><input name="mi"></td>
 
+<td>
+<label>Last Name</label>
+<input name="lastname" required>
+</td>
 <td>Last Name</td>
 <td><input type="text" name="lastname" required></td>
+<td><input name="lastname" required></td>
 </tr>
 
 <tr>
+<td>
+<label>Date of Birth</label>
+<input type="date" name="dob">
+</td>
 <td>Date of Birth</td>
+<td><input type="date" name="dob" required></td>
 <td><input type="date" name="dob"></td>
 
+<td>
+<label>ID Number</label>
+<input type="password" name="id">
+</td>
+<td></td>
 <td>ID Number</td>
+<td><input type="password" name="idnum"></td>
 <td><input type="password" name="id"></td>
 </tr>
 
 <tr>
+<td colspan="3">
+<label>Address 1</label>
+<input name="addr1">
+</td>
 <td>Address Line 1</td>
 <td colspan="5"><input type="text" name="addr1"></td>
+<td>Address 1</td>
+<td colspan="5"><input name="addr1"></td>
 </tr>
 
 <tr>
+<td colspan="3">
+<label>Address 2</label>
+<input name="addr2">
+</td>
 <td>Address Line 2</td>
 <td colspan="5"><input type="text" name="addr2"></td>
+<td>Address 2</td>
+<td colspan="5"><input name="addr2"></td>
 </tr>
 
 <tr>
+<td>
+<label>City</label>
+<input name="city">
+</td>
 <td>City</td>
 <td><input type="text" name="city"></td>
+<td><input name="city"></td>
 
 <td>State</td>
 <td>
-<select name="state">
+<label>State</label>
+<select name="state" required>
 <option value="">Select</option>
-<option>TX</option>
-<option>CA</option>
-<option>NY</option>
+<option value="AL">AL</option>
+<option value="AK">AK</option>
+<option value="AZ">AZ</option>
+<option value="AR">AR</option>
+<option value="CA">CA</option>
+<option value="CO">CO</option>
+<option value="CT">CT</option>
+<option value="DE">DE</option>
+<option value="DC">DC</option>
+<option value="FL">FL</option>
+<option value="GA">GA</option>
+<option value="HI">HI</option>
+<option value="ID">ID</option>
+<option value="IL">IL</option>
+<option value="IN">IN</option>
+<option value="IA">IA</option>
+<option value="KS">KS</option>
+<option value="KY">KY</option>
+<option value="LA">LA</option>
+<option value="ME">ME</option>
+<option value="MD">MD</option>
+<option value="MA">MA</option>
+<option value="MI">MI</option>
+<option value="MN">MN</option>
+<option value="MS">MS</option>
+<option value="MO">MO</option>
+<option value="MT">MT</option>
+<option value="NE">NE</option>
+<option value="NV">NV</option>
+<option value="NH">NH</option>
+<option value="NJ">NJ</option>
+<option value="NM">NM</option>
+<option value="NY">NY</option>
+<option value="NC">NC</option>
+<option value="ND">ND</option>
+<option value="OH">OH</option>
+<option value="OK">OK</option>
+<option value="OR">OR</option>
+<option value="PA">PA</option>
+<option value="RI">RI</option>
+<option value="SC">SC</option>
+<option value="SD">SD</option>
+<option value="TN">TN</option>
+<option value="TX">TX</option>
+<option value="UT">UT</option>
+<option value="VT">VT</option>
+<option value="VA">VA</option>
+<option value="WA">WA</option>
+<option value="WV">WV</option>
+<option value="WI">WI</option>
+<option value="WY">WY</option>
+<option value="PR">PR</option>
 </select>
+
+@@ -90,16 +86,14 @@ <h2>Patient Registration Form</h2>
 </td>
 
+<td>
+<label>ZIP</label>
+<input name="zip">
+</td>
 <td>ZIP</td>
 <td><input type="text" name="zip"></td>
+<td><input name="zip"></td>
 </tr>
 
 </table>
+</fieldset>
 
-</div>
+<!-- ================= BUTTONS ================= -->
 
+<div class="button-row">
+<button class="btn-secondary" type="reset">Start Over</button>
+<button class="btn-primary" type="submit">Submit</button>
 <br>
-
-<button type="reset">Start Over</button>
-<button type="submit">Submit</button>
+</div>
 
 </form>
 
 </div>
+<button type="reset">Clear</button>
+<button type="submit">Submit</button>
+<button class="btn-secondary btn" type="reset">Start Over</button>
+<button class="btn" type="submit">Submit</button>
 
-<!-- ===== FOOTER ===== -->
-<div id="footer">
-BlueLeaf Health Clinic — Houston, TX 77024
-</div>
+<!-- ================= END ================= -->
+</form>
 
+@@ -108,3 +102,5 @@ <h2>Patient Registration Form</h2>
 </body>
 </html>
+
