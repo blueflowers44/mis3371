@@ -10,6 +10,8 @@ Description: External stylesheet for patient registration form
 /* Tag selector example */
 /* ===== GLOBAL ===== */
 
+/* ===== GLOBAL ===== */
+
 body {
   font-family: Arial, sans-serif;
   background: #0f0f18;
@@ -109,5 +111,3 @@ input, select, textarea {
 .btn-secondary:hover {
   background: #666;
 }
-
-
