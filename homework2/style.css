@@ -370,3 +370,11 @@ input[type="submit"],
 input[type="reset"] {
   color: #000000 !important;
 }
+/* ===== HARD LOGO SIZE LOCK (DESKTOP + ALL) ===== */
+img.logo {
+  width: 90px !important;
+  max-width: 90px !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto 10px;
+}
