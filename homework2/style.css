@@ -242,3 +242,43 @@ textarea:focus {
     border-color: #8b6bff;
     box-shadow: 0 0 0 2px rgba(139,107,255,0.25);
 }
+/* ==============================
+   HW2 Visual Parity Additions
+   (match HW1 behavior)
+============================== */
+
+/* Dark theme for date input */
+input[type="date"] {
+  background: #111;
+  color: #e7e7e7;
+  border: 1px solid #3a3a3a;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Match HW1 purple focus glow exactly */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #8b6bff;
+  box-shadow: 0 0 0 2px rgba(139,107,255,0.25);
+}
+
+/* Footer button class compatibility */
+.btn-secondary {
+  background: #b9f6e8;
+  color: #0b0b0b;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  filter: brightness(1.07);
+}
