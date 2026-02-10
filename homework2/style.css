@@ -282,3 +282,40 @@ textarea:focus {
 .btn-secondary:hover {
   filter: brightness(1.07);
 }
+/* ==============================
+   Unified Button Theme (match HW1)
+============================== */
+
+/* Primary submit button — purple */
+.btn-primary,
+input[type="submit"] {
+  background: linear-gradient(135deg, #7c5cff, #9b7bff);
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Secondary buttons — grey */
+.btn-secondary,
+input[type="reset"],
+button:not(.btn-primary) {
+  background: #555555;
+  color: #000000;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Hover behavior */
+.btn-primary:hover,
+.btn-secondary:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:hover {
+  filter: brightness(1.08);
+}
