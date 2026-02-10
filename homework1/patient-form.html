@@ -1,12 +1,8 @@
 <!--
 Program name: patient-form.html
 Author: Asia Roy
-Date created: 02/06/2026
+Date created: 02/05/2026
 Date last edited: 02/09/2026
-Version: 3.1
-Description: HW1 Patient Registration Form
--->
-
 Version: 2.0
 Description: Patient registration form for BlueLeaf Health Clinic
 -->
@@ -14,105 +10,191 @@ Description: Patient registration form for BlueLeaf Health Clinic
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>BlueLeaf Health Clinic – Patient Registration</title>
+    <meta charset="UTF-8">
+    <title>BlueLeaf Health Clinic – Patient Registration</title>
 
-<link rel="stylesheet" href="style.css">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
 
-<script>
-@@ -27,57 +25,55 @@
+    <!-- Dynamic Date Script -->
+    <script>
+        const today = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("currentDate").innerHTML =
+                today.toLocaleDateString('en-US', options);
+        });
+    </script>
+</head>
 
-<body onload="showDate()">
+<body>
 
-<!-- ===== HEADER ===== -->
+<!-- ================= HEADER ================= -->
 <div id="header">
-  <img src="logo.png" alt="BlueLeaf Health Clinic Logo">
-  <img src="logo.png">
-  <h1>BlueLeaf Health Clinic</h1>
-  <div id="today"></div>
+    <img src="logo.png" alt="BlueLeaf Health Clinic Logo" width="140"><br>
+    <h1>BlueLeaf Health Clinic</h1>
+    <p>Today is: <span id="currentDate"></span></p>
 </div>
 
-<!-- ===== CONTENT ===== -->
-<div id="content">
+<!-- ================= MAIN ================= -->
+<div id="main">
 
 <h2>Patient Registration Form</h2>
-<h2>Registration Form (Homework 1)</h2>
 
-<form action="thankyou.html" method="get">
+<!-- No method attribute per assignment -->
+<form action="thankyou.html">
 
-<fieldset>
-<legend>Patient Info</legend>
-<div class="section">
-<div class="section-title">Patient Info</div>
+<table class="form-table" border="0">
 
-<table>
-
+<!-- Name Row -->
 <tr>
 <td>First Name</td>
-<td><input type="text" name="firstname" required></td>
-<td><input name="firstname" required></td>
+<td><input type="text" name="firstname" maxlength="30" required></td>
 
 <td>Middle Initial</td>
-<td><input type="text" name="mi"></td>
-<td><input name="mi"></td>
+<td><input type="text" name="mi" maxlength="1"></td>
 
 <td>Last Name</td>
-<td><input type="text" name="lastname" required></td>
-<td><input name="lastname" required></td>
+<td><input type="text" name="lastname" maxlength="30" required></td>
 </tr>
 
+<!-- DOB + SSN -->
 <tr>
-<td>Date of Birth</td>
-<td><input type="date" name="dob" required></td>
-<td><input type="date" name="dob"></td>
+<td>Date of Birth (MM/DD/YYYY)</td>
+<td><input type="text" name="dob" placeholder="MM/DD/YYYY"></td>
 
-<td>ID Number</td>
-<td><input type="password" name="idnum"></td>
-<td><input type="password" name="id"></td>
+<td>SSN</td>
+<td><input type="password" name="ssn" maxlength="11"></td>
 </tr>
 
+<!-- Address -->
 <tr>
 <td>Address Line 1</td>
-<td colspan="5"><input type="text" name="addr1"></td>
-<td>Address 1</td>
-<td colspan="5"><input name="addr1"></td>
+<td colspan="3"><input type="text" name="addr1" maxlength="30"></td>
 </tr>
 
 <tr>
 <td>Address Line 2</td>
-<td colspan="5"><input type="text" name="addr2"></td>
-<td>Address 2</td>
-<td colspan="5"><input name="addr2"></td>
+<td colspan="3"><input type="text" name="addr2" maxlength="30"></td>
 </tr>
 
+<!-- City State Zip -->
 <tr>
 <td>City</td>
-<td><input type="text" name="city"></td>
-<td><input name="city"></td>
+<td><input type="text" name="city" maxlength="30"></td>
 
 <td>State</td>
 <td>
-@@ -90,16 +86,14 @@ <h2>Patient Registration Form</h2>
+<select name="state">
+<option value="">Select</option>
+<option>TX</option><option>CA</option><option>NY</option><option>FL</option>
+<option>WA</option><option>IL</option><option>AZ</option><option>CO</option>
+<option>GA</option><option>NC</option><option>OH</option><option>MI</option>
+<option>PA</option><option>NJ</option><option>VA</option><option>DC</option>
+<option>PR</option>
+</select>
 </td>
 
 <td>ZIP</td>
-<td><input type="text" name="zip"></td>
-<td><input name="zip"></td>
+<td><input type="text" name="zip" maxlength="10"></td>
+</tr>
+
+<!-- Contact -->
+<tr>
+<td>Email</td>
+<td colspan="3"><input type="email" name="email"></td>
+</tr>
+
+<tr>
+<td>User ID (separate from email)</td>
+<td colspan="3"><input type="text" name="userid" maxlength="20"></td>
+</tr>
+
+<tr>
+<td>Password</td>
+<td><input type="password" name="pw1"></td>
+
+<td>Re-enter Password</td>
+<td><input type="password" name="pw2"></td>
+</tr>
+
+<!-- Radio Group 1 -->
+<tr>
+<td>Gender</td>
+<td colspan="3">
+<input type="radio" name="gender"> Male
+<input type="radio" name="gender"> Female
+<input type="radio" name="gender"> Other
+</td>
+</tr>
+
+<!-- Radio Group 2 -->
+<tr>
+<td>Vaccinated?</td>
+<td colspan="3">
+<input type="radio" name="vax"> Yes
+<input type="radio" name="vax"> No
+</td>
+</tr>
+
+<!-- Radio Group 3 -->
+<tr>
+<td>Have Insurance?</td>
+<td colspan="3">
+<input type="radio" name="ins"> Yes
+<input type="radio" name="ins"> No
+</td>
+</tr>
+
+<!-- Checkboxes -->
+<tr>
+<td>Medical History</td>
+<td colspan="3">
+<input type="checkbox" name="hist"> Diabetes
+<input type="checkbox" name="hist"> Asthma
+<input type="checkbox" name="hist"> Covid-19
+<input type="checkbox" name="hist"> Heart Disease
+<input type="checkbox" name="hist"> High Blood Pressure
+</td>
+</tr>
+
+<!-- Slider -->
+<tr>
+<td>Health Rating (1-10)</td>
+<td colspan="3">
+<input type="range" min="1" max="10" name="healthscale">
+</td>
+</tr>
+
+<!-- Text Area -->
+<tr>
+<td>Describe Current Symptoms</td>
+<td colspan="3">
+<textarea name="symptoms" rows="3" cols="50"></textarea>
+</td>
+</tr>
+
+<!-- Buttons -->
+<tr>
+<td colspan="6" align="center">
+<input type="reset" value="CLEAR AND START OVER">
+<input type="submit" value="Submit">
+</td>
 </tr>
 
 </table>
-</fieldset>
+</form>
 
-<br>
 </div>
 
-<button type="reset">Clear</button>
-<button type="submit">Submit</button>
-<button class="btn-secondary btn" type="reset">Start Over</button>
-<button class="btn" type="submit">Submit</button>
+<!-- ================= FOOTER ================= -->
 <div id="footer">
-BlueLeaf Health Clinic — Houston, TX 77024
+    <p>BlueLeaf Health Clinic</p>
+    <p>PO Box 17428 • Houston, TX 77024</p>
+    <button>Contact Us</button>
 </div>
 
 </body>
 </html>
+
+<!-- End of patient-form.html -->
