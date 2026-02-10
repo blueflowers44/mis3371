@@ -3,15 +3,15 @@ Program name: thankyou.html
 Author: Asia Roy 
 Date created: 02/09/2026
 Date last edited: 02/10/2026
-Version: 2.1
-Description: HW2 confirmation page — themed same as HW1
+Version: 2.0
+Description: HW2 confirmation page (identical layout to HW1)
 -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Thank You – HW2</title>
+<title>Thank You</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -20,28 +20,27 @@ Description: HW2 confirmation page — themed same as HW1
 <body>
 
 <!-- ================= HEADER ================= -->
-<div id="header">
-  <img src="logo.png" alt="BlueLeaf Health Clinic Logo" width="120">
+
+<header class="site-header">
+  <img src="logo.png" alt="BlueLeaf Health Clinic Logo" class="logo">
   <h1>BlueLeaf Health Clinic</h1>
-  <p>Thank you for your submission</p>
-</div>
+</header>
 
-<!-- ================= MAIN ================= -->
-<div id="main">
+<!-- ================= CONTENT ================= -->
 
-  <div class="panel" style="max-width:700px;margin:30px auto;text-align:center;">
+<div class="form-card" style="max-width:900px;text-align:left;">
 
-    <h2>Your patient registration has been received.</h2>
+  <h2>Thank you for your submission</h2>
 
-    <br>
+  <p>Your patient registration has been received.</p>
 
-    <a href="patient-form.html">
-      <button class="btn-secondary" type="button">
-        Back to Form
-      </button>
-    </a>
+  <br>
 
-  </div>
+  <a href="patient-form.html">
+    <button class="btn-secondary" type="button">
+      Back to Form
+    </button>
+  </a>
 
 </div>
 
@@ -54,7 +53,7 @@ Description: HW2 confirmation page — themed same as HW1
                margin-top:40px;
                font-size:14px;">
 
-  BlueLeaf Health Clinic — PO Box 18881 • Sugar Land, TX 77496<br><br>
+  BlueLeaf Health Clinic — P.O. Box 174268 Houston, TX 77024<br><br>
 
   <button class="btn-secondary"
           onclick="alert('Contact: info@blueleafclinic.com')">
