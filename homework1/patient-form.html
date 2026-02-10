@@ -3,119 +3,109 @@ Program name: patient-form.html
 Author: Asia Roy
 Date created: 02/06/2026
 Date last edited: 02/09/2026
-Version: 3.0
-Description: Patient registration form for BlueLeaf Health Clinic (HW1 themed to match HW2)
+Version: 3.1
+Description: HW1 Patient Registration Form
 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>BlueLeaf Health Clinic – Patient Registration</title>
+<title>BlueLeaf Health Clinic – HW1</title>
 
 <link rel="stylesheet" href="style.css">
 
 <script>
-@@ -27,57 +25,55 @@
+function showDate(){
+  const today = new Date();
+  document.getElementById("today").innerText =
+    "Today is: " + today.toDateString();
+}
+</script>
+
+</head>
 
 <body onload="showDate()">
 
-<!-- ===== HEADER ===== -->
-<div id="header">
-  <img src="logo.png" alt="BlueLeaf Health Clinic Logo">
-  <img src="logo.png">
-<h1>BlueLeaf Health Clinic</h1>
-<div id="today"></div>
-</div>
+<header class="site-header">
+  <img src="logo.png" class="logo" alt="BlueLeaf Logo">
+  <h1>BlueLeaf Health Clinic</h1>
+  <div id="today"></div>
+</header>
 
-<!-- ===== CONTENT ===== -->
-<div id="content">
+<h2 class="page-title">Registration Form (Homework 1)</h2>
 
-<h2>Patient Registration Form</h2>
-<h2>Registration Form (Homework 1)</h2>
+<div class="form-card">
 
 <form action="thankyou.html" method="get">
 
-<fieldset>
-<legend>Patient Info</legend>
-<div class="section">
 <div class="section-title">Patient Info</div>
 
-<table>
+<table style="width:100%; border-spacing:14px;">
 
 <tr>
 <td>First Name</td>
-<td><input type="text" name="firstname" required></td>
 <td><input name="firstname" required></td>
 
 <td>Middle Initial</td>
-<td><input type="text" name="mi"></td>
 <td><input name="mi"></td>
 
 <td>Last Name</td>
-<td><input type="text" name="lastname" required></td>
 <td><input name="lastname" required></td>
 </tr>
 
 <tr>
 <td>Date of Birth</td>
-<td><input type="date" name="dob" required></td>
 <td><input type="date" name="dob"></td>
 
 <td>ID Number</td>
-<td><input type="password" name="idnum"></td>
 <td><input type="password" name="id"></td>
 </tr>
 
 <tr>
-<td>Address Line 1</td>
-<td colspan="5"><input type="text" name="addr1"></td>
 <td>Address 1</td>
-<td colspan="5"><input name="addr1"></td>
+<td colspan="3"><input name="addr1"></td>
 </tr>
 
 <tr>
-<td>Address Line 2</td>
-<td colspan="5"><input type="text" name="addr2"></td>
 <td>Address 2</td>
-<td colspan="5"><input name="addr2"></td>
+<td colspan="3"><input name="addr2"></td>
 </tr>
 
 <tr>
 <td>City</td>
-<td><input type="text" name="city"></td>
 <td><input name="city"></td>
 
 <td>State</td>
 <td>
-@@ -90,16 +86,14 @@ <h2>Patient Registration Form</h2>
+<select name="state">
+<option value="">Select</option>
+<option>TX</option>
+<option>CA</option>
+<option>NY</option>
+</select>
 </td>
+</tr>
 
+<tr>
 <td>ZIP</td>
-<td><input type="text" name="zip"></td>
 <td><input name="zip"></td>
 </tr>
 
 </table>
-</fieldset>
 
-<br>
+<div class="button-row">
+<button class="btn-secondary" type="reset">Start Over</button>
+<button class="btn-primary" type="submit">Submit</button>
 </div>
-
-<button type="reset">Clear</button>
-<button type="submit">Submit</button>
-<button class="btn-secondary btn" type="reset">Start Over</button>
-<button class="btn" type="submit">Submit</button>
 
 </form>
 
-@@ -108,3 +102,5 @@ <h2>Patient Registration Form</h2>
-</body>
-</html>
-<!-- ===== FOOTER ===== -->
-
-<div id="footer">
-  BlueLeaf Health Clinic — Houston, TX 77024
 </div>
 
+<div id="footer">
+BlueLeaf Health Clinic — Houston, TX 77024
+</div>
 
-
+</body>
+</html>
