@@ -5,109 +5,154 @@ Date created:02/06/2026
 Date last edited: 02/09/2026
 Version: 1.0
 Description: External stylesheet for patient registration form
-*/
+/* ===============================
+   BlueLeaf Health Clinic Theme
+   Homework 1 + Homework 2 Match
+================================ */
 
-/* Tag selector example */
-/* ===== GLOBAL ===== */
-
-/* ===== GLOBAL ===== */
+/* GLOBAL */
 
 body {
-  font-family: Arial, sans-serif;
-  background: #0f0f18;
-  color: #e8e8ff;
-  margin: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0b12;
+    color: #e6e6f0;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 
-#header {
-  background: linear-gradient(180deg,#1a1a2e,#121224);
-  text-align: center;
-  padding: 30px;
-  border-bottom: 3px solid #7c5cff;
+.site-header {
+    text-align: center;
+    padding: 30px 10px;
+    background: #341a4d;
+    border-bottom: 2px solid #7c5cff;
 }
 
-#header img {
-  width: 120px;
+.logo {
+    width: 90px;
+    margin-bottom: 10px;
 }
 
-#header h1 {
-  margin: 10px 0 5px;
-  color: #b8a6ff;
+.site-header h1 {
+    margin: 10px 0 5px 0;
+    font-size: 36px;
+    color: #aef3e7;
 }
 
 #today {
-  color: #cfc7ff;
-  font-size: 14px;
+    font-size: 16px;
+    opacity: 0.9;
 }
 
-/* ===== CONTENT ===== */
+/* PAGE TITLE */
 
-#content {
-  padding: 30px;
+.page-title {
+    margin: 30px auto 10px;
+    max-width: 1100px;
+    padding: 0 20px;
 }
 
-/* ===== FORM SECTIONS ===== */
+/* CARD */
 
-.section {
-  background: #1a1a2b;
-  border: 2px solid #6e4cff;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 25px;
+.form-card {
+    max-width: 1100px;
+    margin: 10px auto 40px;
+    background: #151522;
+    border-radius: 12px;
+    padding: 20px 22px 28px;
+    border: 1px solid #5a3fa0;
+    box-shadow: 0 0 0 1px rgba(124,92,255,0.15) inset;
 }
+
+/* SECTION BAR */
 
 .section-title {
-  background: #6e4cff;
-  color: white;
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-weight: bold;
-  margin-bottom: 15px;
+    background: #3c2d55;
+    color: #e9dcff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 18px 0 14px;
+    font-weight: bold;
+    font-size: 15px;
 }
 
-/* ===== TABLE ===== */
+/* GRID */
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px 18px;
 }
 
-td {
-  padding: 8px;
+.form-row-full {
+    grid-column: 1 / -1;
 }
 
-input, select, textarea {
-  width: 100%;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #555;
-  background: #0f0f18;
-  color: white;
+/* INPUTS */
+
+label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+    color: #d7d7e6;
 }
 
-/* ===== BUTTONS — SAME AS HW2 ===== */
-
-.btn {
-  background: #6e4cff;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-right: 10px;
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #3d3d55;
+    background: #0e0e17;
+    color: #e6e6f0;
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
-.btn:hover {
-  background: #8f75ff;
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #8b6bff;
+    box-shadow: 0 0 0 2px rgba(139,107,255,0.25);
+}
+
+/* BUTTONS */
+
+.button-row {
+    margin-top: 22px;
+    display: flex;
+    gap: 12px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #7c5cff, #9b7bff);
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
 }
 
 .btn-secondary {
-  background: #444;
+    background: #444;
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-.btn-secondary:hover {
-  background: #666;
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
 }
