@@ -6,427 +6,218 @@ Date last edited: 02/09/2026
 Version: 2.0
 Description: HW2 validation + review display logic for patient registration form
 */
-
 (function () {
-  "use strict";
+"use strict";
 
-  // ---------- Helpers ----------
-  function $(id) { return document.getElementById(id); }
+/* ================= HELPERS ================= */
 
-  function setErr(id, msg) {
-    const el = $(id);
-    if (el) el.textContent = msg || "";
+function $(id){ return document.getElementById(id); }
+
+function setErr(id,msg){
+  const el = $(id);
+  if(el) el.textContent = msg || "";
+}
+
+function fmtMoney(n){
+  return Number(n).toLocaleString("en-US",
+    {style:"currency",currency:"USD",maximumFractionDigits:0});
+}
+
+function getRadioValue(name){
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : "";
+}
+
+function getCheckedValues(name){
+  return Array.from(
+    document.querySelectorAll(`input[name="${name}"]:checked`)
+  ).map(x=>x.value);
+}
+
+/* ================= HEADER DATE ================= */
+
+function setHeaderDate(){
+  const today = new Date();
+  $("currentDate").textContent =
+    today.toLocaleDateString("en-US",
+      {weekday:"long",year:"numeric",month:"long",day:"numeric"});
+}
+
+/* ================= DOB VALIDATION ================= */
+
+function validateDOB(){
+  setErr("err_dob","");
+
+  const mm=$("dobMM").value.trim();
+  const dd=$("dobDD").value.trim();
+  const yy=$("dobYYYY").value.trim();
+
+  if(!mm||!dd||!yy){
+    setErr("err_dob","DOB required");
+    return false;
   }
 
-  function fmtMoney(n) {
-    const num = Number(n);
-    return num.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+  const d=new Date(yy,mm-1,dd);
+  if(d.getMonth()!=mm-1||d.getDate()!=dd){
+    setErr("err_dob","Invalid date");
+    return false;
   }
 
-  function getCheckedValues(name) {
-    const nodes = document.querySelectorAll(`input[name="${name}"]:checked`);
-    return Array.from(nodes).map(n => n.value);
+  const today=new Date();
+  if(d>today){
+    setErr("err_dob","DOB cannot be future");
+    return false;
   }
 
-  function getRadioValue(name) {
-    const node = document.querySelector(`input[name="${name}"]:checked`);
-    return node ? node.value : "";
+  return true;
+}
+
+/* ================= PASSWORD ================= */
+
+function validatePasswords(){
+  setErr("err_pw1","");
+  setErr("err_pw2","");
+
+  const pw1=$("pw1").value;
+  const pw2=$("pw2").value;
+
+  if(pw1.length<8){
+    setErr("err_pw1","Min 8 chars");
+    return false;
   }
 
-  function onlyDigitsZip(zip) {
-    // grab first 5 digits even if ZIP+4 is entered
-    const m = String(zip).match(/^(\d{5})/);
-    return m ? m[1] : "";
+  if(!/[A-Z]/.test(pw1)||
+     !/[a-z]/.test(pw1)||
+     !/[0-9]/.test(pw1)){
+    setErr("err_pw1","Need upper/lower/number");
+    return false;
   }
 
-  // ---------- Dynamic header date ----------
-  function setHeaderDate() {
-    const today = new Date();
-    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
-    $("currentDate").textContent = today.toLocaleDateString("en-US", options);
+  if(pw1!==pw2){
+    setErr("err_pw2","Passwords must match");
+    return false;
   }
 
-  // ---------- Salary slider dynamic display ----------
-  function wireSalary() {
-    const slider = $("salary");
-    const display = $("salaryDisplay");
-    function update() {
-      display.textContent = fmtMoney(slider.value);
-    }
-    slider.addEventListener("input", update);
-    update();
+  return true;
+}
+
+/* ================= ZIP ================= */
+
+function validateZip(){
+  setErr("err_zip","");
+  const z=$("zip").value.trim();
+  if(!/^\d{5}/.test(z)){
+    setErr("err_zip","ZIP invalid");
+    return false;
+  }
+  $("zip").value=z.substring(0,5);
+  return true;
+}
+
+/* ================= RADIO GROUPS ================= */
+
+function validateRadios(){
+  let ok=true;
+
+  if(!getRadioValue("housing")){
+    setErr("err_housing","Choose one");
+    ok=false;
   }
 
-  // ---------- User ID lowercasing ----------
-  function wireUserIdLowercase() {
-    const userId = $("userId");
-    function toLower() {
-      userId.value = (userId.value || "").toLowerCase();
-    }
-    userId.addEventListener("blur", toLower);
-    userId.addEventListener("change", toLower);
+  if(!getRadioValue("vax")){
+    setErr("err_vax","Choose one");
+    ok=false;
   }
 
-  // ---------- Validation rules (JS where required) ----------
-
-  function validateDOB() {
-    setErr("err_dob", "");
-
-    const mm = $("dobMM").value.trim();
-    const dd = $("dobDD").value.trim();
-    const yyyy = $("dobYYYY").value.trim();
-
-    if (!mm || !dd || !yyyy) {
-      setErr("err_dob", "DOB is required (MM/DD/YYYY).");
-      return false;
-    }
-
-    const month = Number(mm);
-    const day = Number(dd);
-    const year = Number(yyyy);
-
-    // Basic sanity
-    if (year < 1900 || year > 9999) {
-      setErr("err_dob", "Year must be a valid 4-digit year.");
-      return false;
-    }
-
-    // Create date object and confirm it matches inputs
-    const dob = new Date(year, month - 1, day);
-    if (dob.getFullYear() !== year || dob.getMonth() !== (month - 1) || dob.getDate() !== day) {
-      setErr("err_dob", "DOB is not a valid calendar date.");
-      return false;
-    }
-
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    // Not in future
-    if (dob > today) {
-      setErr("err_dob", "ERROR: DOB cannot be in the future.");
-      return false;
-    }
-
-    // Not more than 120 years ago
-    const min = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
-    if (dob < min) {
-      setErr("err_dob", "ERROR: DOB cannot be more than 120 years ago.");
-      return false;
-    }
-
-    return true;
+  if(!getRadioValue("ins")){
+    setErr("err_ins","Choose one");
+    ok=false;
   }
 
-  function validatePasswords() {
-    setErr("err_pw1", "");
-    setErr("err_pw2", "");
+  return ok;
+}
 
-    const pw1 = $("pw1").value || "";
-    const pw2 = $("pw2").value || "";
-    const userId = ($("userId").value || "").toLowerCase();
-    const first = ($("firstName").value || "").toLowerCase();
-    const last = ($("lastName").value || "").toLowerCase();
+/* ================= BASIC HTML CHECK ================= */
 
-    // disallow double quotes
-    if (pw1.includes('"') || pw2.includes('"')) {
-      setErr("err_pw1", 'Password cannot contain double quotes (").');
-      return false;
-    }
+function validateBasic(){
+  const form=$("patientForm");
+  if(!form.checkValidity()){
+    form.reportValidity();
+    return false;
+  }
+  return true;
+}
 
-    // length 8-30 already constrained in HTML, but we re-check
-    if (pw1.length < 8 || pw1.length > 30) {
-      setErr("err_pw1", "Password must be 8–30 characters.");
-      return false;
-    }
+/* ================= MASTER VALIDATE ================= */
 
-    // complexity: upper, lower, digit, special (no quotes)
-    const hasUpper = /[A-Z]/.test(pw1);
-    const hasLower = /[a-z]/.test(pw1);
-    const hasDigit = /[0-9]/.test(pw1);
-    const hasSpecial = /[!@#%^&*()\-_+=\\/><.,`~$]/.test(pw1);
+function validateAll(){
+  const basic = validateBasic();
+  const dob   = validateDOB();
+  const pw    = validatePasswords();
+  const zip   = validateZip();
+  const rad   = validateRadios();
 
-    if (!(hasUpper && hasLower && hasDigit && hasSpecial)) {
-      setErr("err_pw1", "Password must include upper, lower, number, and special character.");
-      return false;
-    }
+  return basic && dob && pw && zip && rad;
+}
 
-    // cannot equal or contain user id or contain name parts
-    const pwLower = pw1.toLowerCase();
-    if (userId && (pwLower === userId || pwLower.includes(userId))) {
-      setErr("err_pw1", "Password cannot equal or contain your User ID.");
-      return false;
-    }
-    if (first && pwLower.includes(first)) {
-      setErr("err_pw1", "Password cannot contain your first name.");
-      return false;
-    }
-    if (last && pwLower.includes(last)) {
-      setErr("err_pw1", "Password cannot contain your last name.");
-      return false;
-    }
+/* ================= REVIEW PANEL ================= */
 
-    // match
-    if (pw1 !== pw2) {
-      setErr("err_pw2", "Passwords do not match.");
-      return false;
-    }
+function buildReview(){
+  $("reviewArea").innerHTML = `
+    <div class="review-row">
+      <span class="review-label">Name</span>
+      <span class="review-val">
+        ${$("firstName").value} ${$("lastName").value}
+      </span>
+      <span class="review-status">OK</span>
+    </div>`;
+}
 
-    return true;
+/* ================= BUTTON WIRING ================= */
+
+function wireButtons(){
+
+  const form = $("patientForm");
+  if(!form){
+    alert("Form not found — JS not attached");
+    return;
   }
 
-  function validateZipAndTruncate() {
-    setErr("err_zip", "");
-    const zipEl = $("zip");
-    const zip = zipEl.value.trim();
-
-    // HTML pattern checks format, but requirement says allow ZIP+4 and truncate redisplay
-    const five = onlyDigitsZip(zip);
-    if (!five) {
-      setErr("err_zip", "ZIP is required (##### or #####-####).");
-      return false;
-    }
-
-    // truncate to 5 digits and re-display corrected
-    zipEl.value = five;
-    return true;
-  }
-
-  function validateRadioGroups() {
-    setErr("err_housing", "");
-    setErr("err_vax", "");
-    setErr("err_ins", "");
-
-    let ok = true;
-    if (!getRadioValue("housing")) { setErr("err_housing", "Choose one."); ok = false; }
-    if (!getRadioValue("vax")) { setErr("err_vax", "Choose one."); ok = false; }
-    if (!getRadioValue("ins")) { setErr("err_ins", "Choose one."); ok = false; }
-
-    return ok;
-  }
-
-  function validateTextAreaNoQuotes() {
-    setErr("err_symptoms", "");
-    const t = $("symptoms").value || "";
-    if (t.includes('"')) {
-      setErr("err_symptoms", 'Please remove double quotes (").');
-      return false;
-    }
-    return true;
-  }
-
-  function validateAll() {
-    // Clear field-specific errors that are handled by browser patterns
-    setErr("err_firstName", "");
-    setErr("err_middleInitial", "");
-    setErr("err_lastName", "");
-    setErr("err_idNumber", "");
-    setErr("err_email", "");
-    setErr("err_phone", "");
-    setErr("err_addr1", "");
-    setErr("err_addr2", "");
-    setErr("err_city", "");
-    setErr("err_state", "");
-
-    // Let HTML pattern/required show if it fails, but we also add messages:
-    const form = $("patientForm");
-    const basicOK = form.checkValidity();
-
-    if (!basicOK) {
-      // show small friendly messages near common fields
-      if (!$("firstName").checkValidity()) setErr("err_firstName", "Fix First Name format.");
-      if (!$("middleInitial").checkValidity()) setErr("err_middleInitial", "Middle Initial must be 1 letter or blank.");
-      if (!$("lastName").checkValidity()) setErr("err_lastName", "Fix Last Name format.");
-      if (!$("idNumber").checkValidity()) setErr("err_idNumber", "ID must be 5–30 digits.");
-      if (!$("email").checkValidity()) setErr("err_email", "Enter a valid email.");
-      if (!$("phone").checkValidity()) setErr("err_phone", "Phone must be 000-000-0000.");
-      if (!$("addr1").checkValidity()) setErr("err_addr1", "Address Line 1 is required (2–30).");
-      // addr2 optional but if filled and too short => invalid
-      if ($("addr2").value.trim() && !$("addr2").checkValidity()) setErr("err_addr2", "Address Line 2 must be 2–30 if entered.");
-      if (!$("city").checkValidity()) setErr("err_city", "City is required (2–30).");
-      if (!$("state").checkValidity()) setErr("err_state", "Select a state.");
-      if (!$("userId").checkValidity()) setErr("err_userId", "User ID rules not met.");
-
-      // Make browser show its own popups too
-      form.reportValidity();
-    } else {
-      setErr("err_userId", "");
-    }
-
-    // JS-only validations:
-    const dobOK = validateDOB();
-    const zipOK = validateZipAndTruncate();
-    const radiosOK = validateRadioGroups();
-    const symptomsOK = validateTextAreaNoQuotes();
-    const pwOK = validatePasswords();
-
-    return basicOK && dobOK && zipOK && radiosOK && symptomsOK && pwOK;
-  }
-
-  // ---------- Review Output ----------
-  function buildReview() {
-    // Apply lowercasing / truncation edits before display
-    $("userId").value = ($("userId").value || "").toLowerCase();
-    validateZipAndTruncate();
-
-    const first = $("firstName").value.trim();
-    const mi = $("middleInitial").value.trim();
-    const last = $("lastName").value.trim();
-
-    const dob = `${$("dobMM").value.trim()}/${$("dobDD").value.trim()}/${$("dobYYYY").value.trim()}`;
-    const email = $("email").value.trim();
-    const phone = $("phone").value.trim();
-
-    const addr1 = $("addr1").value.trim();
-    const addr2 = $("addr2").value.trim();
-    const city = $("city").value.trim();
-    const state = $("state").value.trim();
-    const zip = $("zip").value.trim();
-
-    const history = getCheckedValues("hist");
-    const housing = getRadioValue("housing");
-    const vax = getRadioValue("vax");
-    const ins = getRadioValue("ins");
-
-    const salary = fmtMoney($("salary").value);
-    const symptoms = ($("symptoms").value || "").trim();
-
-    const userId = $("userId").value.trim();
-
-    // Build output (line up nicely)
-    const html = `
-      <div class="review-block">
-        <div class="review-subtitle">BASIC INFO</div>
-        <div class="review-row">
-          <span class="review-label">Name</span>
-          <span class="review-val">${first} ${mi ? mi + "." : ""} ${last}</span>
-          <span class="review-status">${first && last ? "pass" : "ERROR"}</span>
-        </div>
-
-        <div class="review-row">
-          <span class="review-label">Date of Birth</span>
-          <span class="review-val">${dob}</span>
-          <span class="review-status">${validateDOB() ? "pass" : "ERROR"}</span>
-        </div>
-
-        <div class="review-subtitle">CONTACT</div>
-        <div class="review-row">
-          <span class="review-label">Email</span>
-          <span class="review-val">${email}</span>
-          <span class="review-status">${$("email").checkValidity() ? "pass" : "ERROR"}</span>
-        </div>
-
-        <div class="review-row">
-          <span class="review-label">Phone</span>
-          <span class="review-val">${phone}</span>
-          <span class="review-status">${$("phone").checkValidity() ? "pass" : "ERROR"}</span>
-        </div>
-
-        <div class="review-subtitle">ADDRESS</div>
-        <div class="review-row">
-          <span class="review-label">Address</span>
-          <span class="review-val">
-            ${addr1}${addr2 ? "<br>" + addr2 : ""}<br>
-            ${city}, ${state} ${zip}
-          </span>
-          <span class="review-status">${(addr1 && city && state && zip) ? "pass" : "ERROR"}</span>
-        </div>
-
-        <div class="review-subtitle">REQUESTED INFO</div>
-        <div class="review-row">
-          <span class="review-label">Medical History</span>
-          <span class="review-val">${history.length ? history.join(", ") : "None selected"}</span>
-          <span class="review-status">pass</span>
-        </div>
-
-        <div class="review-row">
-          <span class="review-label">Housing</span>
-          <span class="review-val">${housing || "—"}</span>
-          <span class="review-status">${housing ? "pass" : "ERROR"}</span>
-        </div>
-
-        <div class="review-row">
-          <span class="review-label">Vaccinated?</span>
-          <span class="review-val">${vax || "—"}</span>
-          <span class="review-status">${vax ? "pass" : "ERROR"}</span>
-        </div>
-
-        <div class="review-row">
-          <span class="review-label">Insurance?</span>
-          <span class="review-val">${ins || "—"}</span>
-          <span class="review-status">${ins ? "pass" : "ERROR"}</span>
-        </div>
-
-        <div class="review-row">
-          <span class="review-label">Desired Salary</span>
-          <span class="review-val">${salary}</span>
-          <span class="review-status">pass</span>
-        </div>
-
-        <div class="review-row">
-          <span class="review-label">Symptoms</span>
-          <span class="review-val">${symptoms ? symptoms.replace(/</g,"&lt;").replace(/>/g,"&gt;") : "(none)"}</span>
-          <span class="review-status">${validateTextAreaNoQuotes() ? "pass" : "ERROR"}</span>
-        </div>
-
-        <div class="review-subtitle">ACCOUNT</div>
-        <div class="review-row">
-          <span class="review-label">User ID</span>
-          <span class="review-val">${userId}</span>
-          <span class="review-status">${$("userId").checkValidity() ? "pass" : "ERROR"}</span>
-        </div>
-
-        <div class="review-row">
-          <span class="review-label">Password</span>
-          <span class="review-val">(hidden)</span>
-          <span class="review-status">${validatePasswords() ? "pass" : "ERROR"}</span>
-        </div>
-
-        <div class="note muted">
-          Tip: Fix any “ERROR” items and click Review again, then Submit.
-        </div>
-      </div>
-    `;
-
-    $("reviewArea").innerHTML = html;
-  }
-
-  // ---------- Wiring ----------
-  function wireButtons() {
-    $("btnReview").addEventListener("click", function () {
-      const ok = validateAll();
+  /* SUBMIT BLOCKER */
+  form.addEventListener("submit", function(e){
+    if(!validateAll()){
+      e.preventDefault();
+      e.stopPropagation();
       buildReview();
-      if (!ok) {
-        alert("Some fields need corrections. Review panel shows PASS/ERROR and field messages show what to fix.");
-      }
-    });
+      alert("Submission blocked — fix errors");
+      return false;
+    }
+  });
 
-    $("patientForm").addEventListener("submit", function (e) {
-      const ok = validateAll();
-      if (!ok) {
-        e.preventDefault();
-        buildReview();
-        alert("Fix the highlighted errors before submitting.");
-      }
-    });
+  /* REVIEW */
+  $("btnReview").addEventListener("click", function(){
+    validateAll();
+    buildReview();
+  });
 
-    $("btnReset").addEventListener("click", function () {
-      // clear review + errors when reset
-      setTimeout(() => {
-        $("reviewArea").innerHTML = '<p class="muted">Click <b>Review</b> to display your entered information here.</p>';
-        const errs = document.querySelectorAll(".err");
-        errs.forEach(el => el.textContent = "");
-        wireSalary(); // reset display
-      }, 0);
-    });
-  }
+  /* RESET */
+  $("btnReset").addEventListener("click", function(){
+    setTimeout(()=>{
+      document.querySelectorAll(".err")
+        .forEach(e=>e.textContent="");
+      $("reviewArea").innerHTML =
+        '<p class="muted">Click Review</p>';
+    },0);
+  });
+}
 
-  function init() {
-    setHeaderDate();
-    wireSalary();
-    wireUserIdLowercase();
-    wireButtons();
-  }
+/* ================= INIT ================= */
 
-  document.addEventListener("DOMContentLoaded", init);
+function init(){
+  setHeaderDate();
+  wireButtons();
+}
+
+document.addEventListener("DOMContentLoaded", init);
 
 })();
