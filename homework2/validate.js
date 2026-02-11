@@ -2,7 +2,7 @@
 File name: validate.js
 Author: Asia Roy 
 Date created: 02/09/2026
-Date last edited: 02/10/2026
+Date last edited: 02/11/2026
 Version: 2.0
 Description: HW2 validation + review display logic for patient registration form
 */
@@ -37,13 +37,29 @@ function getCheckedValues(name){
 /* ================= HEADER DATE ================= */
 
 function setHeaderDate(){
+  if(!$("currentDate")) return;
   const today = new Date();
   $("currentDate").textContent =
     today.toLocaleDateString("en-US",
       {weekday:"long",year:"numeric",month:"long",day:"numeric"});
 }
 
-/* ================= DOB VALIDATION ================= */
+/* ================= SALARY SLIDER ================= */
+
+function wireSalary(){
+  const slider = $("salary");
+  const display = $("salaryDisplay");
+  if(!slider || !display) return;
+
+  function update(){
+    display.textContent = fmtMoney(slider.value);
+  }
+
+  slider.addEventListener("input", update);
+  update();
+}
+
+/* ================= DOB ================= */
 
 function validateDOB(){
   setErr("err_dob","");
@@ -63,8 +79,7 @@ function validateDOB(){
     return false;
   }
 
-  const today=new Date();
-  if(d>today){
+  if(d>new Date()){
     setErr("err_dob","DOB cannot be future");
     return false;
   }
@@ -114,30 +129,25 @@ function validateZip(){
   return true;
 }
 
-/* ================= RADIO GROUPS ================= */
+/* ================= RADIOS ================= */
 
 function validateRadios(){
   let ok=true;
 
   if(!getRadioValue("housing")){
-    setErr("err_housing","Choose one");
-    ok=false;
+    setErr("err_housing","Choose one"); ok=false;
   }
-
   if(!getRadioValue("vax")){
-    setErr("err_vax","Choose one");
-    ok=false;
+    setErr("err_vax","Choose one"); ok=false;
   }
-
   if(!getRadioValue("ins")){
-    setErr("err_ins","Choose one");
-    ok=false;
+    setErr("err_ins","Choose one"); ok=false;
   }
 
   return ok;
 }
 
-/* ================= BASIC HTML CHECK ================= */
+/* ================= BASIC ================= */
 
 function validateBasic(){
   const form=$("patientForm");
@@ -148,65 +158,77 @@ function validateBasic(){
   return true;
 }
 
-/* ================= MASTER VALIDATE ================= */
+/* ================= MASTER ================= */
 
 function validateAll(){
-  const basic = validateBasic();
-  const dob   = validateDOB();
-  const pw    = validatePasswords();
-  const zip   = validateZip();
-  const rad   = validateRadios();
-
-  return basic && dob && pw && zip && rad;
+  return validateBasic()
+      && validateDOB()
+      && validatePasswords()
+      && validateZip()
+      && validateRadios();
 }
 
 /* ================= REVIEW PANEL ================= */
 
 function buildReview(){
+
+  const name = `${$("firstName").value} ${$("middleInitial").value} ${$("lastName").value}`;
+  const dob  = `${$("dobMM").value}/${$("dobDD").value}/${$("dobYYYY").value}`;
+  const email = $("email").value;
+  const phone = $("phone").value;
+
+  const addr = `
+    ${$("addr1").value}<br>
+    ${$("addr2").value}<br>
+    ${$("city").value}, ${$("state").value} ${$("zip").value}
+  `;
+
+  const history = getCheckedValues("hist").join(", ") || "None";
+  const housing = getRadioValue("housing");
+  const vax = getRadioValue("vax");
+  const ins = getRadioValue("ins");
+
+  const salary = fmtMoney($("salary").value);
+  const userId = $("userId").value.toLowerCase();
+
   $("reviewArea").innerHTML = `
-    <div class="review-row">
-      <span class="review-label">Name</span>
-      <span class="review-val">
-        ${$("firstName").value} ${$("lastName").value}
-      </span>
-      <span class="review-status">OK</span>
-    </div>`;
+    <div class="review-row"><span>Name</span><span>${name}</span><span>OK</span></div>
+    <div class="review-row"><span>DOB</span><span>${dob}</span><span>OK</span></div>
+    <div class="review-row"><span>Email</span><span>${email}</span><span>OK</span></div>
+    <div class="review-row"><span>Phone</span><span>${phone}</span><span>OK</span></div>
+    <div class="review-row"><span>Address</span><span>${addr}</span><span>OK</span></div>
+    <div class="review-row"><span>History</span><span>${history}</span><span>OK</span></div>
+    <div class="review-row"><span>Housing</span><span>${housing}</span><span>OK</span></div>
+    <div class="review-row"><span>Vaccinated</span><span>${vax}</span><span>OK</span></div>
+    <div class="review-row"><span>Insurance</span><span>${ins}</span><span>OK</span></div>
+    <div class="review-row"><span>Salary</span><span>${salary}</span><span>OK</span></div>
+    <div class="review-row"><span>User ID</span><span>${userId}</span><span>OK</span></div>
+  `;
 }
 
-/* ================= BUTTON WIRING ================= */
+/* ================= BUTTONS ================= */
 
 function wireButtons(){
 
-  const form = $("patientForm");
-  if(!form){
-    alert("Form not found — JS not attached");
-    return;
-  }
-
-  /* SUBMIT BLOCKER */
-  form.addEventListener("submit", function(e){
+  $("patientForm").addEventListener("submit", function(e){
     if(!validateAll()){
       e.preventDefault();
-      e.stopPropagation();
       buildReview();
       alert("Submission blocked — fix errors");
-      return false;
     }
   });
 
-  /* REVIEW */
   $("btnReview").addEventListener("click", function(){
     validateAll();
     buildReview();
   });
 
-  /* RESET */
   $("btnReset").addEventListener("click", function(){
     setTimeout(()=>{
       document.querySelectorAll(".err")
         .forEach(e=>e.textContent="");
-      $("reviewArea").innerHTML =
-        '<p class="muted">Click Review</p>';
+      $("reviewArea").innerHTML='<p class="muted">Click Review</p>';
+      wireSalary();
     },0);
   });
 }
@@ -215,6 +237,7 @@ function wireButtons(){
 
 function init(){
   setHeaderDate();
+  wireSalary();
   wireButtons();
 }
 
