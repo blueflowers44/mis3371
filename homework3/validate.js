@@ -447,14 +447,29 @@ function wireLiveValidation(){
 
 }
   function wireButtons() {
-    const form = $("patientForm");
-    const btnReview = $("btnReview");
-    const btnReset = $("btnReset");
+   const btnValidate = $("btnValidate");
+   const btnSubmit = $("btnSubmit");
 
-    if (!form) { alert("Form not found (id='patientForm')."); return; }
-    if (!btnReview) { alert("Review button not found (id='btnReview')."); return; }
-    if (!$("reviewArea")) { alert("Review area not found (id='reviewArea')."); return; }
+   if(btnValidate){
+   btnValidate.addEventListener("click", function(){
 
+   const ok = validateAll();
+   buildReview();
+
+    if(ok){
+    alert("All fields look good. You can now submit.");
+    if(btnSubmit){
+    btnSubmit.disabled = false;
+      }
+    } else {
+      alert("Please fix the highlighted errors.");
+      if(btnSubmit){
+      btnSubmit.disabled = true;
+      }
+    }
+
+  });
+}
     // Review
     btnReview.addEventListener("click", function () {
       validateAll();
