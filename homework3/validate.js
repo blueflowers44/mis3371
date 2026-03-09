@@ -4,7 +4,7 @@ Author: Asia Roy
 Date created: 03/09/2026
 Date last edited: 03/09/2026
 Version: 3.0
-Description: HW2 validation + review display logic for patient registration form
+Description: HW3 validation + review display logic for patient registration form
 */
 (function () {
   "use strict";
