@@ -4,11 +4,28 @@ Author: Asia Roy
 Date created: 03/09/2026
 Date last edited: 03/09/2026
 Version: 4.0
-Description: HW3 validation + review display logic for patient registration form
+Description: HW4 validation + review display logic for patient registration form
 */
 (function () {
   "use strict";
+async function loadStates(){
 
+try{
+
+const response = await fetch("states.txt");
+const data = await response.text();
+
+document.getElementById("state").innerHTML = data;
+
+}
+
+catch(error){
+
+console.log("Error loading state list");
+
+}
+
+}
   /* ================= HELPERS ================= */
 
   function $(id) { return document.getElementById(id); }
@@ -528,6 +545,7 @@ function wireLiveValidation(){
   wireSalary();
   wireLiveValidation();   // NEW
   wireButtons();
+  loadStates();
 }
 
   document.addEventListener("DOMContentLoaded", init);
