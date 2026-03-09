@@ -444,11 +444,17 @@ Description: Homework 3 - Patient registration with validation + review display
           <!-- Buttons -->
           <tr>
             <td colspan="4" class="btn-row">
-              <input type="reset" id="btnReset" value="START OVER">
-              <button type="submit" id="btnValidate">Validate</button>
-              <button type="button" id="btnReview">Review</button>
-              <input type="submit" id="btnSubmit" value="Submit" disabled>
-            </td>
+  <input type="reset" id="btnReset" value="START OVER">
+
+  <!-- Validate button runs JS only -->
+  <button type="button" id="btnValidate">Validate</button>
+
+  <!-- Submit stays disabled until validation passes -->
+  <input type="submit" id="btnSubmit" value="Submit" disabled>
+
+  <!-- Optional review -->
+  <button type="button" id="btnReview">Review</button>
+</td>
           </tr>
 
         </table>
