@@ -87,7 +87,24 @@ return "";
     return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
       .map(x => x.value);
   }
+function checkUserCookie(){
 
+const name = getCookie("firstName");
+
+if(name != ""){
+
+document.querySelector("#header h1").innerText =
+"Welcome back, " + name;
+
+}
+else{
+
+document.querySelector("#header h1").innerText =
+"Welcome New User";
+
+}
+
+}
   function only5Zip(zip) {
     const m = String(zip).match(/^(\d{5})/);
     return m ? m[1] : "";
