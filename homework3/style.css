@@ -36,13 +36,7 @@ body {
   color: #b9f6e8;
   letter-spacing: 0.5px;
 }
-#header{
-position:sticky;
-top:0;
-z-index:1000;
-background:#1a1a28;
-padding:10px;
-}
+
 #main {
   padding: 18px;
 }
