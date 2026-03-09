@@ -1,4 +1,4 @@
-/*
+ /*
 File name: validate.js
 Author: Asia Roy 
 Date created: 03/09/2026
@@ -447,58 +447,79 @@ function wireLiveValidation(){
 
 }
   function wireButtons() {
-   const btnValidate = $("btnValidate");
-   const btnSubmit = $("btnSubmit");
 
-   if(btnValidate){
-   btnValidate.addEventListener("click", function(){
+  const form = $("patientForm");
+  const btnValidate = $("btnValidate");
+  const btnSubmit = $("btnSubmit");
+  const btnReview = $("btnReview");
+  const btnReset = $("btnReset");
 
-   const ok = validateAll();
-   buildReview();
+  if(!form){
+    alert("Form not found (patientForm)");
+    return;
+  }
 
-    if(ok){
-    alert("All fields look good. You can now submit.");
-    if(btnSubmit){
-    btnSubmit.disabled = false;
+  if(btnValidate){
+    btnValidate.addEventListener("click", function(){
+
+      const ok = validateAll();
+      buildReview();
+
+      if(ok){
+        alert("All fields look good. You can now submit.");
+        if(btnSubmit){
+          btnSubmit.disabled = false;
+        }
+      } else {
+        alert("Please fix the highlighted errors.");
+        if(btnSubmit){
+          btnSubmit.disabled = true;
+        }
       }
-    } else {
-      alert("Please fix the highlighted errors.");
-      if(btnSubmit){
-      btnSubmit.disabled = true;
-      }
-    }
 
-  });
-}
-    // Review
-    btnReview.addEventListener("click", function () {
+    });
+  }
+
+  if(btnReview){
+    btnReview.addEventListener("click", function(){
       validateAll();
       buildReview();
     });
+  }
 
-    // Submit
-    form.addEventListener("submit", function (e) {
+  if(form){
+    form.addEventListener("submit", function(e){
+
       const ok = validateAll();
       buildReview();
-      if (!ok) {
+
+      if(!ok){
         e.preventDefault();
         e.stopPropagation();
         alert("Fix the highlighted errors before submitting.");
       }
-    });
 
-    // Reset
-    if (btnReset) {
-      btnReset.addEventListener("click", function () {
-        setTimeout(() => {
-          document.querySelectorAll(".err").forEach(el => el.textContent = "");
-          $("reviewArea").innerHTML =
-            '<p class="muted">Click <b>Review</b> to display your entered information here.</p>';
-          wireSalary(); // restore salary display
-        }, 0);
-      });
-    }
+    });
   }
+
+  if(btnReset){
+    btnReset.addEventListener("click", function(){
+
+      setTimeout(function(){
+        document.querySelectorAll(".err").forEach(function(el){
+          el.textContent = "";
+        });
+
+        $("reviewArea").innerHTML =
+        '<p class="muted">Click <b>Review</b> to display your entered information here.</p>';
+
+        wireSalary();
+      },0);
+
+    });
+  }
+
+}
 
   /* ================= INIT ================= */
 
