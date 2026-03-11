@@ -115,18 +115,15 @@ function checkUserCookie(){
 
 const name = getCookie("firstName");
 
-if(name!=""){
+if(name != ""){
 
-document.querySelector("#header h1").innerText =
+document.getElementById("welcomeMsg").innerText =
 "Welcome back, " + name;
 
-if($("firstName")){
-$("firstName").value = name;
 }
+else{
 
-}else{
-
-document.querySelector("#header h1").innerText =
+document.getElementById("welcomeMsg").innerText =
 "Welcome New User";
 
 }
