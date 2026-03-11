@@ -39,9 +39,11 @@ body {
 #header{
 position:sticky;
 top:0;
-z-index:1000;
-background:#1a1a28;
-padding:10px;
+text-align: center;
+padding: 18px 12 px;
+background:#2b163e
+border-bottom: 2px solid #8b5cf6;
+z-index: 1000;
 }
 #main {
   padding: 18px;
@@ -416,22 +418,6 @@ img.logo {
   font-size: 36px;
   color: #aef3e7;
 }
-/* =========================
-   MATCH HW1 HEADER EXACTLY
-========================= */
-
-.site-header {
-  text-align: center;
-  padding: 30px 10px;
-  background: #341a4d;
-  border-bottom: 2px solid #7c5cff;
-}
-
-.site-header h1 {
-  margin: 10px 0 5px 0;
-  font-size: 36px;
-  color: #aef3e7;
-}
 
 /* force logo size same as HW1 everywhere */
 .site-header .logo {
@@ -441,19 +427,5 @@ img.logo {
   display: block;
   margin: 0 auto 10px;
 }
-/* ===== FORCE HW1 HEADER MATCH ===== */
 
-.site-header {
-  text-align: center !important;
-  padding: 30px 10px !important;
-  background: #341a4d !important;
-  border-bottom: 2px solid #7c5cff !important;
-}
 
-.site-header .logo {
-  width: 90px !important;
-  max-width: 90px !important;
-  height: auto !important;
-  display: block !important;
-  margin: 0 auto 10px !important;
-}
